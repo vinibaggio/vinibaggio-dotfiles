@@ -99,8 +99,8 @@ nnoremap Y y$
 " I don't want the original snippmate snippets
 let g:snippets_dir='~/.vim/snippets'
 source ~/.vim/snippets/support_functions.vim
-"autocmd vimenter * call s:SetupSnippets()
-"function! s:SetupSnippets()
+" autocmd vimenter * call s:SetupSnippets()
+" function! s:SetupSnippets()
 "    "if we're in a rails env then read in the rails snippets
 "    if filereadable("./config/environment.rb")
 "        call ExtractSnips("~/.vim/snippets/ruby-rails", "ruby")
@@ -110,11 +110,7 @@ source ~/.vim/snippets/support_functions.vim
 "    call ExtractSnips("~/.vim/snippets/html", "eruby")
 "    call ExtractSnips("~/.vim/snippets/html", "xhtml")
 "    call ExtractSnips("~/.vim/snippets/html", "php")
-"endfunction
-
-
-set statusline=
-" Add syntastic to ruler bar
+" endfunction
 
 "Adding a statusline 
 set statusline=
@@ -128,6 +124,5 @@ set statusline+=%=                            " seperate between right- and left
 set statusline+=%1*%y%*%*\                    " file type
 set statusline+=%10((%l/%L)%)\                " line and column
 set statusline+=%P                            " percentage of file
-
 " Show it!
 set laststatus=2
