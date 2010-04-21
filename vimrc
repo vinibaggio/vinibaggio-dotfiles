@@ -14,6 +14,9 @@ set smarttab
 " Stop annoying bells
 set vb
 
+" No folding! I hate folding!
+set nofoldenable
+
 " As seen on Vimcasts, expand path for the current file
 let mapleader=','
 map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
