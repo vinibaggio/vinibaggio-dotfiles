@@ -17,6 +17,9 @@ set vb
 " No folding! I hate folding!
 set nofoldenable
 
+" Load pathogen
+call pathogen#runtime_append_all_bundles()
+
 " As seen on Vimcasts, expand path for the current file
 let mapleader=','
 map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
