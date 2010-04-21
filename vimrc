@@ -94,7 +94,23 @@ imap <S-Tab> <C-n>
 
 " I hate Y behavior, isn't natural for me
 " so Y now copies until the end of the line
-map Y y$
+nnoremap Y y$
 
-" I don't want the snipmate's bundles snippets, only my own
+" I don't want the original snippmate snippets
 let g:snippets_dir='~/.vim/snippets'
+source ~/.vim/snippets/support_functions.vim
+"autocmd vimenter * call s:SetupSnippets()
+"function! s:SetupSnippets()
+"    "if we're in a rails env then read in the rails snippets
+"    if filereadable("./config/environment.rb")
+"        call ExtractSnips("~/.vim/snippets/ruby-rails", "ruby")
+"        call ExtractSnips("~/.vim/snippets/eruby-rails", "eruby")
+"    endif
+"
+"    call ExtractSnips("~/.vim/snippets/html", "eruby")
+"    call ExtractSnips("~/.vim/snippets/html", "xhtml")
+"    call ExtractSnips("~/.vim/snippets/html", "php")
+"endfunction
+
+
+
