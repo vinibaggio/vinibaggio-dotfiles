@@ -95,3 +95,6 @@ imap <S-Tab> <C-n>
 " I hate Y behavior, isn't natural for me
 " so Y now copies until the end of the line
 map Y y$
+
+" I don't want the snipmate's bundles snippets, only my own
+let g:snippets_dir='~/.vim/snippets'
