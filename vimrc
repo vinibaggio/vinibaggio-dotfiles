@@ -45,7 +45,7 @@ if has("autocmd")
   " autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
   
   " Automatically remove whitespaces while saving files
-  autocmd BufWritePre *.yml,*.rb,*.html,*.css,*.erb,*.haml :call <SID>StripTrailingWhitespaces()
+  autocmd BufWritePre *.snippet,*.yml,*.rb,*.html,*.css,*.erb,*.haml :call <SID>StripTrailingWhitespaces()
 endif
 
 
