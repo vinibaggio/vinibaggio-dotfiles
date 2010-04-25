@@ -90,7 +90,10 @@ map <D-0> :tablast<CR>
 cab W w
 cab Q q
 " Map Shift-Tab to autocomplete
-imap <S-Tab> <C-n>
+" imap <S-Tab> <C-n>
+
+" Map hashrocket as Textmate
+imap <C-L> =>
 
 " I hate Y behavior, isn't natural for me
 " so Y now copies until the end of the line
