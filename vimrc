@@ -93,7 +93,7 @@ cab Q q
 " imap <S-Tab> <C-n>
 
 " Map hashrocket as Textmate
-imap <C-L> =>
+imap <C-L> <Space>=><Space>
 
 " I hate Y behavior, isn't natural for me
 " so Y now copies until the end of the line
