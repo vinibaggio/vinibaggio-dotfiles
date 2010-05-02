@@ -28,3 +28,6 @@
 [submodule "bundle/textile.vim"]
 	path = bundle/textile.vim
 	url = http://github.com/timcharper/textile.vim.git
+[submodule "bundle/vim-markdown"]
+	path = bundle/vim-markdown
+	url = http://github.com/tpope/vim-markdown.git
