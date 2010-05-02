@@ -28,3 +28,6 @@
 [submodule "bundle/vim-unimpaired"]
 	path = bundle/vim-unimpaired
 	url = http://github.com/tpope/vim-unimpaired.git
+[submodule "bundle/textile.vim"]
+	path = bundle/textile.vim
+	url = http://github.com/timcharper/textile.vim.git
