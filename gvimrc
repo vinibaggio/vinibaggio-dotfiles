@@ -1,4 +1,4 @@
-source /Users/vini/.vimrc
+source $HOME/.vimrc
 
 colorscheme vividchalk
 set gfn=Menlo\ Regular:h12
