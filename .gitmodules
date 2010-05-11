@@ -31,3 +31,6 @@
 [submodule "bundle/vim-markdown"]
 	path = bundle/vim-markdown
 	url = http://github.com/tpope/vim-markdown.git
+[submodule "bundle/zencoding-vim"]
+	path = bundle/zencoding-vim
+	url = http://github.com/mattn/zencoding-vim.git
