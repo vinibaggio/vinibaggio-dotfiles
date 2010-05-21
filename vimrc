@@ -27,6 +27,8 @@ map <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
+map <leader>s :set spell<CR>
+map <leader>S :set nospell<CR>
 " Expand Rails-specific commands
 " map <leader>is :RSintegrationtest 
 " map <leader>c :Rcontroller
@@ -131,3 +133,17 @@ set statusline+=%10((%l/%L)%)\                " line and column
 set statusline+=%P                            " percentage of file
 " Show it!
 set laststatus=2
+
+
+" formatting text
+set formatprg=par
+set textwidth=80
+set formatoptions+=t
+
+" TAB idents, STab unindents (thanks hashrocket!)
+vnoremap <silent> <TAB> >gv
+vnoremap <silent> <S-TAB> <gv
+
+" Command r and Command R
+autocmd User Rails nnoremap <buffer> <D-r> :<C-U>Rake<CR>
+autocmd User Rails nnoremap <buffer> <D-R> :<C-U>.Rake<CR>
