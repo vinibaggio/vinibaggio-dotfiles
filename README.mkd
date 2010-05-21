@@ -1,0 +1,33 @@
+
+# My vimfiles
+
+My own Vimfiles. I tend to use vim-pathogen so plugins are easier to update.
+
+# Features
+
+* auto-identation, syntax highlight and all the basic stuff you would expect  
+  from a decent text editor
+* Pathogen for organizing vim plugins into it's own place
+* Spelling with ,s and ,S to deactivate
+* Strip whitespace on the end of lines for a set of filetypes:
+* Command <number> and Command Arrows (I know, I'm a noob) to change tabs
+* Ctrl-l inputs a => (i like this, specially when you map [capslock to ctrl](http://devlab.ca/?p=4188))
+* A cool status bar
+* Ruby syntax error detector! 
+* shift visually selected block with tab and s-tab
+
+# Plugins
+* snippets - obvious reasons
+* pathogen - set vim plugins into bundles, more organized
+* rails.vim - the awesomeness of awesome for rails programming
+* Commant-T - TextMate-like file finder, pretty cool (requires some setup!)
+* tComment - Comment code easily
+* vim-ragtag - awesome erb and html editing
+* surround - change surroundings, such as ( " [
+* vim-unimpaired - adds blank lines, swap lines, pretty cool
+* zencoding-vim - one day I'll learn how to be proeficient with this.
+* endwise - automagically add's end in your if's and do's etc
+* speeddating - increases and decreases dates as you do with numbers
+* matchit - navigation++ with % 
+* supertab - code completion
+* syntastic - syntax checking
