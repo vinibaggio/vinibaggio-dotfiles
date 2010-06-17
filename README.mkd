@@ -25,9 +25,11 @@ My own Vimfiles. I tend to use vim-pathogen so plugins are easier to update.
 * vim-ragtag - awesome erb and html editing
 * surround - change surroundings, such as ( " [
 * vim-unimpaired - adds blank lines, swap lines, pretty cool
-* zencoding-vim - one day I'll learn how to be proeficient with this.
-* endwise - automagically add's end in your if's and do's etc
+* fugitive - Gdiff looks very cool
+* zencoding-vim - one day I'll learn how to be proefficient with this.
+* endwise - automagically adds end in your if's and do's etc
 * speeddating - increases and decreases dates as you do with numbers
 * matchit - navigation++ with % 
 * supertab - code completion
 * syntastic - syntax checking
+* pastie
