@@ -14,6 +14,9 @@ set smarttab
 " Stop annoying bells
 set vb
 
+" Swap files: off you go
+set noswapfile
+
 " No folding! I hate folding!
 set nofoldenable
 
@@ -40,10 +43,11 @@ if has("autocmd")
   filetype plugin indent on
 
   " Default settings
-  set ts=4 sts=4 sw=4 noexpandtab
+  set ts=4 sts=4 sw=4 expandtab
   " Styles depending on file type
   autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
 
   " Treat different file types as one we know. Example:
   " autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
