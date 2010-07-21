@@ -49,3 +49,6 @@
 [submodule "bundle/rvm.vim"]
 	path = bundle/rvm.vim
 	url = http://github.com/csexton/rvm.vim.git
+[submodule "bundle/ack.vim"]
+	path = bundle/ack.vim
+	url = http://github.com/mileszs/ack.vim.git
