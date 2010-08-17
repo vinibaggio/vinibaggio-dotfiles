@@ -142,4 +142,5 @@ autocmd User Rails nnoremap <buffer> <D-R> :<C-U>.Rake<CR>
 
 
 " Commant T ignore list
-set wildignore+=public/uploads/*
+set wildignore+=*/public/uploads/*
+set wildignore+=*/db/sphinx/*
