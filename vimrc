@@ -43,7 +43,7 @@ if has("autocmd")
   filetype plugin indent on
 
   " Default settings
-  set ts=4 sts=4 sw=4 expandtab
+  set ts=2 sts=2 sw=2 expandtab
   " Styles depending on file type
   autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
@@ -140,6 +140,7 @@ vnoremap <silent> <S-TAB> <gv
 autocmd User Rails nnoremap <buffer> <D-r> :<C-U>Rake<CR>
 autocmd User Rails nnoremap <buffer> <D-R> :<C-U>.Rake<CR>
 
+nnoremap \] :<C-U>CommandT<CR>
 
 " Commant T ignore list
 set wildignore+=*/public/uploads/*
