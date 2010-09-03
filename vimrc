@@ -97,6 +97,7 @@ map <D-0> :tablast<CR>
 " I always type W instead of w
 cab W w
 cab Q q
+cab Vsp vsp
 " Map Shift-Tab to autocomplete
 " imap <S-Tab> <C-n>
 
