@@ -1,6 +1,6 @@
 source $HOME/.vimrc
 
-colorscheme vividchalk
+colorscheme mustang
 set gfn=Menlo\ Regular:h12
 set guioptions=egmrt
 set showtabline=2

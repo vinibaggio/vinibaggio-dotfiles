@@ -11,6 +11,10 @@ set hidden
 set hlsearch
 set smarttab
 
+" ignore case if search pattern is all lowercase,
+"    case-sensitive otherwise
+set smartcase
+
 " Stop annoying bells
 set vb
 
@@ -22,6 +26,7 @@ set nofoldenable
 
 " Load pathogen
 call pathogen#runtime_append_all_bundles()
+
 
 " As seen on Vimcasts, expand path for the current file
 let mapleader=','
@@ -108,6 +113,25 @@ imap <C-L> <Space>=><Space>
 " so Y now copies until the end of the line
 nnoremap Y y$
 
+" TAB idents, STab unindents (thanks hashrocket!)
+vnoremap <silent> <TAB> >gv
+vnoremap <silent> <S-TAB> <gv
+
+" Faster commands
+nnoremap ; :
+
+" Use Q for formatting the current paragraph (or selection)
+vmap Q gq
+nmap Q gqap
+
+" Command r and Command R
+autocmd User Rails nnoremap <buffer> <D-r> :<C-U>Rake<CR>
+autocmd User Rails nnoremap <buffer> <D-R> :<C-U>.Rake<CR>
+
+nnoremap \] :<C-U>CommandT<CR>
+
+source ~/.vim/nerdtree_conf.vim
+
 " I don't want the original snippmate snippets
 let g:snippets_dir='~/.vim/snippets'
 source ~/.vim/snippets/support_functions.vim
@@ -132,17 +156,3 @@ set laststatus=2
 set formatprg=par
 set textwidth=80
 set formatoptions+=t
-
-" TAB idents, STab unindents (thanks hashrocket!)
-vnoremap <silent> <TAB> >gv
-vnoremap <silent> <S-TAB> <gv
-
-" Command r and Command R
-autocmd User Rails nnoremap <buffer> <D-r> :<C-U>Rake<CR>
-autocmd User Rails nnoremap <buffer> <D-R> :<C-U>.Rake<CR>
-
-nnoremap \] :<C-U>CommandT<CR>
-
-" Commant T ignore list
-set wildignore+=*/public/uploads/*
-set wildignore+=*/db/sphinx/*
