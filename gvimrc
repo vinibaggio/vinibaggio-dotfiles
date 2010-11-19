@@ -18,3 +18,7 @@ nmap <leader>l :set list!<CR>
 set listchars=tab:▸\ ,eol:¬
 
 
+" Vim's relative number FTW!
+set relativenumber
+
+set colorcolumn=85

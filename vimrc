@@ -11,10 +11,6 @@ set hidden
 set hlsearch
 set smarttab
 
-" ignore case if search pattern is all lowercase,
-"    case-sensitive otherwise
-set smartcase
-
 " Stop annoying bells
 set vb
 
@@ -23,6 +19,32 @@ set noswapfile
 
 " No folding! I hate folding!
 set nofoldenable
+
+nnoremap / /\v
+vnoremap / /\v
+set ignorecase
+set smartcase
+set gdefault
+
+set textwidth=79
+set formatoptions=qrn1
+
+
+nnoremap <leader><space> :noh<cr>
+
+" Learn correctly, stupid
+" nnoremap <up> <nop>
+" nnoremap <down> <nop>
+" nnoremap <left> <nop>
+" nnoremap <right> <nop>
+" inoremap <up> <nop>
+" inoremap <down> <nop>
+" inoremap <left> <nop>
+" inoremap <right> <nop>
+" nnoremap j gj
+" nnoremap k gk
+
+
 
 " Load pathogen
 call pathogen#runtime_append_all_bundles()
@@ -37,6 +59,7 @@ map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 map <leader>s :set spell<CR>
 map <leader>S :set nospell<CR>
+map <leader><tab> :Scratch<CR>
 " Expand Rails-specific commands
 " map <leader>is :RSintegrationtest 
 " map <leader>c :Rcontroller
@@ -130,7 +153,6 @@ autocmd User Rails nnoremap <buffer> <D-R> :<C-U>.Rake<CR>
 
 nnoremap \] :<C-U>CommandT<CR>
 
-source ~/.vim/nerdtree_conf.vim
 
 " I don't want the original snippmate snippets
 let g:snippets_dir='~/.vim/snippets'
@@ -146,7 +168,7 @@ set statusline+=%{SyntasticStatuslineFlag()}  "   "
 set statusline+=%*                            "   "
 set statusline+=%=                            " seperate between right- and left-aligned
 set statusline+=%1*%y%*%*\                    " file type
-set statusline+=%10((%l/%L)%)\                " line and column
+set statusline+=%10((%l/%v)%)\                " line and column
 set statusline+=%P                            " percentage of file
 " Show it!
 set laststatus=2
@@ -156,3 +178,9 @@ set laststatus=2
 set formatprg=par
 set textwidth=80
 set formatoptions+=t
+
+
+" Vi's wildignore
+set wildignore+=*.png,*.sp*,*.sqlite3,*.jpg,*.jpeg
+
+
