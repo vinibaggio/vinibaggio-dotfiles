@@ -64,3 +64,6 @@
 [submodule "bundle/vim-rake"]
 	path = bundle/vim-rake
 	url = http://github.com/tpope/vim-rake.git
+[submodule "bundle/cocoa.vim"]
+	path = bundle/cocoa.vim
+	url = https://github.com/msanders/cocoa.vim.git
