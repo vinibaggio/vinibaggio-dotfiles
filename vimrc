@@ -29,6 +29,10 @@ set gdefault
 set textwidth=79
 set formatoptions=qrn1
 
+if &t_Co > 255
+  colorscheme mustang
+  set colorcolumn=85
+endif
 
 nnoremap <leader><space> :noh<cr>
 
@@ -44,12 +48,6 @@ nnoremap <leader><space> :noh<cr>
 " nnoremap j gj
 " nnoremap k gk
 
-
-
-" Load pathogen
-call pathogen#runtime_append_all_bundles()
-
-
 " As seen on Vimcasts, expand path for the current file
 let mapleader=','
 map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
@@ -60,6 +58,7 @@ map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>s :set spell<CR>
 map <leader>S :set nospell<CR>
 map <leader><tab> :Scratch<CR>
+map <leader>r :so ~/.vimrc<CR>
 " Expand Rails-specific commands
 " map <leader>is :RSintegrationtest 
 " map <leader>c :Rcontroller
@@ -83,6 +82,9 @@ if has("autocmd")
   " Automatically remove whitespaces while saving files
   autocmd BufWritePre *.snippet,*.yml,*.rb,*.html,*.css,*.erb,*.haml :call <SID>StripTrailingWhitespaces()
 endif
+
+" Load pathogen
+call pathogen#runtime_append_all_bundles()
 
 
 " As seen on Vimcasts
@@ -175,9 +177,9 @@ set laststatus=2
 
 
 " formatting text
-set formatprg=par
-set textwidth=80
-set formatoptions+=t
+" set formatprg=par
+" set textwidth=80
+" set formatoptions+=t
 
 
 " Vi's wildignore
