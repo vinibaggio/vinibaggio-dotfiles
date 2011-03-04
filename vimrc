@@ -80,7 +80,7 @@ if has("autocmd")
   " autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
   
   " Automatically remove whitespaces while saving files
-  autocmd BufWritePre *.snippet,*.yml,*.rb,*.html,*.css,*.erb,*.haml :call <SID>StripTrailingWhitespaces()
+  " autocmd BufWritePre *.snippet,*.yml,*.rb,*.html,*.css,*.erb,*.haml :call <SID>StripTrailingWhitespaces()
 endif
 
 " Load pathogen
@@ -155,6 +155,7 @@ autocmd User Rails nnoremap <buffer> <D-R> :<C-U>.Rake<CR>
 
 nnoremap \] :<C-U>CommandT<CR>
 
+nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 
 " I don't want the original snippmate snippets
 let g:snippets_dir='~/.vim/snippets'
@@ -184,5 +185,3 @@ set laststatus=2
 
 " Vi's wildignore
 set wildignore+=*.png,*.sp*,*.sqlite3,*.jpg,*.jpeg
-
-
