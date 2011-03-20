@@ -1,6 +1,9 @@
 set autoindent
 syntax on
 
+" Force bash mode, even in zsh, so Rails.vim work
+set sh=bash
+
 " Display line numbers and information ruler
 set number
 set ruler
@@ -60,7 +63,7 @@ map <leader>S :set nospell<CR>
 map <leader><tab> :Scratch<CR>
 map <leader>r :so ~/.vimrc<CR>
 " Expand Rails-specific commands
-" map <leader>is :RSintegrationtest 
+" map <leader>is :RSintegrationtest
 " map <leader>c :Rcontroller
 
 " As seen on Vimcasts
@@ -78,7 +81,7 @@ if has("autocmd")
 
   " Treat different file types as one we know. Example:
   " autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
-  
+
   " Automatically remove whitespaces while saving files
   " autocmd BufWritePre *.snippet,*.yml,*.rb,*.html,*.css,*.erb,*.haml :call <SID>StripTrailingWhitespaces()
 endif
@@ -161,13 +164,34 @@ nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 let g:snippets_dir='~/.vim/snippets'
 source ~/.vim/snippets/support_functions.vim
 
-"Adding a statusline 
+"return '[\s]' if trailing white space is detected
+"return '' otherwise
+function! StatuslineTrailingSpaceWarning()
+    if !exists("b:statusline_trailing_space_warning")
+
+        if !&modifiable
+            let b:statusline_trailing_space_warning = ''
+            return b:statusline_trailing_space_warning
+        endif
+
+        if search('\s\+$', 'nw') != 0
+            let b:statusline_trailing_space_warning = '[\s]'
+        else
+            let b:statusline_trailing_space_warning = ''
+        endif
+    endif
+    return b:statusline_trailing_space_warning
+endfunction
+
+
+"Adding a statusline
 set statusline=
 set statusline+=%<\                           " cut at start
 set statusline+=%2*[%n%H%M%R%W]%*\            " buffer number, and flags
 set statusline+=%-40f\                        " relative path
 set statusline+=%#warningmsg#                 " Syntastic
 set statusline+=%{SyntasticStatuslineFlag()}  "   "
+set statusline+=%{StatuslineTrailingSpaceWarning()} " Trailing spaces
 set statusline+=%*                            "   "
 set statusline+=%=                            " seperate between right- and left-aligned
 set statusline+=%1*%y%*%*\                    " file type
@@ -176,6 +200,8 @@ set statusline+=%P                            " percentage of file
 " Show it!
 set laststatus=2
 
+"recalculate the trailing whitespace warning when idle, and after saving
+autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 
 " formatting text
 " set formatprg=par
