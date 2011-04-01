@@ -23,8 +23,6 @@ set noswapfile
 " No folding! I hate folding!
 set nofoldenable
 
-nnoremap / /\v
-vnoremap / /\v
 set ignorecase
 set smartcase
 set gdefault
