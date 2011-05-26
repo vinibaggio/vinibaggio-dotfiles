@@ -37,9 +37,6 @@
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = http://github.com/scrooloose/nerdtree.git
-[submodule "bundle/vim-markdown-preview"]
-	path = bundle/vim-markdown-preview
-	url = http://github.com/robgleeson/vim-markdown-preview.git
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
 	url = http://github.com/tpope/vim-fugitive.git
