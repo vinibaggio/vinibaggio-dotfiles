@@ -1,7 +1,7 @@
 source $HOME/.vimrc
 
 colorscheme mustang
-set gfn=Menlo\ Regular:h12
+set gfn=Inconsolata:h16
 set guioptions=egmrt
 set showtabline=2
 
