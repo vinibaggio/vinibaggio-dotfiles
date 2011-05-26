@@ -208,4 +208,4 @@ autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 
 
 " Vi's wildignore
-set wildignore+=*.png,*.sp*,*.sqlite3,*.jpg,*.jpeg
+set wildignore+=*.png,*.sp*,*.sqlite3,*.jpg,*.jpeg,vendor/ruby/**
