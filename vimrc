@@ -212,3 +212,7 @@ set wildignore+=*.png,*.sp*,*.sqlite3,*.jpg,*.jpeg,vendor/ruby/**
 
 " Make supertab use omnicomplete
 let g:SuperTabDefaultCompletionType = "context"
+
+" Tagbar
+let g:tagbar_usearrows = 1
+nnoremap <leader>l :TagbarToggle<CR>
