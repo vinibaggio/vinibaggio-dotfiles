@@ -209,3 +209,6 @@ autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 
 " Vi's wildignore
 set wildignore+=*.png,*.sp*,*.sqlite3,*.jpg,*.jpeg,vendor/ruby/**
+
+" Make supertab use omnicomplete
+let g:SuperTabDefaultCompletionType = "context"
