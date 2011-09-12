@@ -115,3 +115,6 @@
 [submodule "bundle/html5-syntax"]
 	path = bundle/html5-syntax
 	url = https://github.com/othree/html5-syntax.vim.git
+[submodule "bundle/jasmine"]
+	path = bundle/jasmine
+	url = git://github.com/claco/jasmine.vim.git
