@@ -1,6 +1,6 @@
 source $HOME/.vimrc
 
-colorscheme mustang
+colorscheme Tomorrow-Night-Bright
 set gfn=Inconsolata:h16
 set guioptions=egmrt
 set showtabline=2
