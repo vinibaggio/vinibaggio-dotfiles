@@ -184,8 +184,6 @@ set statusline=
 set statusline+=%<\                           " cut at start
 set statusline+=%2*[%n%H%M%R%W]%*\            " buffer number, and flags
 set statusline+=%-40f\                        " relative path
-set statusline+=%#warningmsg#                 " Syntastic
-set statusline+=%{SyntasticStatuslineFlag()}  "   "
 set statusline+=%{StatuslineTrailingSpaceWarning()} " Trailing spaces
 set statusline+=%*                            "   "
 set statusline+=%=                            " seperate between right- and left-aligned
