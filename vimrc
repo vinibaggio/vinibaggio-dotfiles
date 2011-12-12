@@ -60,9 +60,6 @@ map <leader>s :set spell<CR>
 map <leader>S :set nospell<CR>
 map <leader><tab> :Scratch<CR>
 map <leader>r :so ~/.vimrc<CR>
-" Expand Rails-specific commands
-" map <leader>is :RSintegrationtest
-" map <leader>c :Rcontroller
 
 " As seen on Vimcasts
 if has("autocmd")
@@ -215,4 +212,10 @@ let g:SuperTabDefaultCompletionType = "context"
 
 " Tagbar
 let g:tagbar_usearrows = 1
-nnoremap <leader>l :TagbarToggle<CR>
+nmap <leader>l :TagbarToggle<CR>
+
+" Settings for vim clojure
+let g:clj_highlight_builtins=1      " Highlight Clojure's builtins
+let g:clj_paren_rainbow=1           " Rainbow parentheses'!
+let vimclojure#WantNailgun = 1
+let vimclojure#NailgunClient = "/Users/vinibaggio/.vim/bundle/vim-clojure/ng"
