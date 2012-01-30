@@ -121,3 +121,9 @@
 [submodule "bundle/gist-vim"]
 	path = bundle/gist-vim
 	url = https://github.com/mattn/gist-vim.git
+[submodule "bundle/vim-eunuch"]
+	path = bundle/vim-eunuch
+	url = https://github.com/tpope/vim-eunuch.git
+[submodule "bundle/rtf_pygmentize"]
+	path = bundle/rtf_pygmentize
+	url = https://github.com/rafaelfranca/rtf_pygmentize.git
