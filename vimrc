@@ -31,7 +31,7 @@ set textwidth=79
 set formatoptions=qrn1
 
 if &t_Co > 255
-  colorscheme mustang
+  colorscheme lanai
   set colorcolumn=85
 endif
 
@@ -58,7 +58,6 @@ map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 map <leader>s :set spell<CR>
 map <leader>S :set nospell<CR>
-map <leader><tab> :Scratch<CR>
 map <leader>r :so ~/.vimrc<CR>
 
 " As seen on Vimcasts
@@ -217,3 +216,7 @@ let g:clj_highlight_builtins=1      " Highlight Clojure's builtins
 let g:clj_paren_rainbow=1           " Rainbow parentheses'!
 let vimclojure#WantNailgun = 1
 let vimclojure#NailgunClient = "/Users/vinibaggio/.vim/bundle/vim-clojure/ng"
+
+" RTF pygmentize
+let g:rtfp_theme = 'friendly'
+let g:rtfp_font = 'Inconsolata'
