@@ -139,3 +139,6 @@
 [submodule "bundle/snipmate-snippets"]
 	path = bundle/snipmate-snippets
 	url = https://github.com/honza/snipmate-snippets.git
+[submodule "bundle/argtextobj.vim"]
+	path = bundle/argtextobj.vim
+	url = https://github.com/vim-scripts/argtextobj.vim.git
