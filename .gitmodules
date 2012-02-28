@@ -48,7 +48,7 @@
 	url = http://github.com/csexton/rvm.vim.git
 [submodule "bundle/ack.vim"]
 	path = bundle/ack.vim
-	url = http://github.com/mileszs/ack.vim.git
+	url = git://github.com/mileszs/ack.vim.git
 [submodule "bundle/vim-rooter"]
 	path = bundle/vim-rooter
 	url = http://github.com/airblade/vim-rooter.git
