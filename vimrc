@@ -155,8 +155,8 @@ nnoremap \] :<C-U>CommandT<CR>
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 
 " I don't want the original snippmate snippets
-"let g:snippets_dir='~/.vim/snippets'
-"source ~/.vim/snippets/support_functions.vim
+let g:snippets_dir='~/.vim/snippets'
+source ~/.vim/snippets/support_functions.vim
 
 "return '[\s]' if trailing white space is detected
 "return '' otherwise
