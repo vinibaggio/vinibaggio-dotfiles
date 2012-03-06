@@ -59,6 +59,7 @@ map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>s :set spell<CR>
 map <leader>S :set nospell<CR>
 map <leader>r :so ~/.vimrc<CR>
+nnoremap <leader><leader> <c-^>
 
 " As seen on Vimcasts
 if has("autocmd")
