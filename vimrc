@@ -151,7 +151,9 @@ nmap Q gqap
 autocmd User Rails nnoremap <buffer> <D-r> :<C-U>Rake<CR>
 autocmd User Rails nnoremap <buffer> <D-R> :<C-U>.Rake<CR>
 
-nnoremap \] :<C-U>CommandT<CR>
+" Command T stuff
+map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
+map \] :CommandTFlush<cr>\|:CommandT<cr>
 
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 
