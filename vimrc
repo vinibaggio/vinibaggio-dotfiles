@@ -30,6 +30,14 @@ set gdefault
 set textwidth=79
 set formatoptions=qrn1
 
+" Expand buffer when switching
+set switchbuf=useopen
+set winwidth=100
+set winheight=25
+
+" Expand path in command
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
 if &t_Co > 255
   colorscheme lanai
   set colorcolumn=85
