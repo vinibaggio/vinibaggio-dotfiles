@@ -142,3 +142,9 @@
 [submodule "bundle/argtextobj.vim"]
 	path = bundle/argtextobj.vim
 	url = https://github.com/vim-scripts/argtextobj.vim.git
+[submodule "bundle/vim-colors-solarized"]
+	path = bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "bundle/vim-tubaina"]
+	path = bundle/vim-tubaina
+	url = git@codeplane.com:vinibaggio/vim-tubaina.git
