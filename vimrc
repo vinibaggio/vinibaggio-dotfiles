@@ -107,6 +107,13 @@ function! <SID>StripTrailingWhitespaces()
   call cursor(l,c)
 endfunction
 
+function! Bright()
+  set background=light
+  colorscheme solarized
+  set transparency=0
+  set gfn=Inconsolata-dz:h18
+endfunction
+
 
 " As seen on Vimcasts
 " Use window movement with Ctrl-h instead of Ctrl-w h and so on
