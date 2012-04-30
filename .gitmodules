@@ -148,3 +148,6 @@
 [submodule "bundle/vim-tubaina"]
 	path = bundle/vim-tubaina
 	url = git@github.com:vinibaggio/vim-tubaina.git
+[submodule "bundle/vim-powerline"]
+	path = bundle/vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline.git

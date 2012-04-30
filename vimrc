@@ -68,6 +68,7 @@ map <leader>s :set spell<CR>
 map <leader>S :set nospell<CR>
 map <leader>r :so ~/.vimrc<CR>
 nnoremap <leader><leader> <c-^>
+nnoremap <leader>t :TagbarToggle<CR>
 
 " As seen on Vimcasts
 if has("autocmd")
@@ -90,8 +91,8 @@ if has("autocmd")
 endif
 
 " Load pathogen
-call pathogen#runtime_append_all_bundles()
-
+call pathogen#infect()
+call pathogen#helptags()
 
 " As seen on Vimcasts
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
@@ -151,6 +152,8 @@ imap <C-L> <Space>=><Space>
 " so Y now copies until the end of the line
 nnoremap Y y$
 
+nnoremap <silent> <leader>T :TagbarToggle<CR>
+
 " TAB idents, STab unindents (thanks hashrocket!)
 vnoremap <silent> <TAB> >gv
 vnoremap <silent> <S-TAB> <gv
@@ -176,42 +179,9 @@ nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 let g:snippets_dir='~/.vim/snippets'
 source ~/.vim/snippets/support_functions.vim
 
-"return '[\s]' if trailing white space is detected
-"return '' otherwise
-function! StatuslineTrailingSpaceWarning()
-    if !exists("b:statusline_trailing_space_warning")
-
-        if !&modifiable
-            let b:statusline_trailing_space_warning = ''
-            return b:statusline_trailing_space_warning
-        endif
-
-        if search('\s\+$', 'nw') != 0
-            let b:statusline_trailing_space_warning = '[\s]'
-        else
-            let b:statusline_trailing_space_warning = ''
-        endif
-    endif
-    return b:statusline_trailing_space_warning
-endfunction
-
-
-"Adding a statusline
-set statusline=
-set statusline+=%<\                           " cut at start
-set statusline+=%2*[%n%H%M%R%W]%*\            " buffer number, and flags
-set statusline+=%-40f\                        " relative path
-set statusline+=%{StatuslineTrailingSpaceWarning()} " Trailing spaces
-set statusline+=%*                            "   "
-set statusline+=%=                            " seperate between right- and left-aligned
-set statusline+=%1*%y%*%*\                    " file type
-set statusline+=%10((%l/%v)%)\                " line and column
-set statusline+=%P                            " percentage of file
-" Show it!
 set laststatus=2
 
-"recalculate the trailing whitespace warning when idle, and after saving
-autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
+let g:Powerline_symbols='fancy'
 
 " formatting text
 " set formatprg=par
