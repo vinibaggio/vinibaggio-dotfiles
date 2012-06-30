@@ -169,9 +169,13 @@ nmap Q gqap
 autocmd User Rails nnoremap <buffer> <D-r> :<C-U>Rake<CR>
 autocmd User Rails nnoremap <buffer> <D-R> :<C-U>.Rake<CR>
 
-" Command T stuff
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-map \] :CommandTFlush<cr>\|:CommandT<cr>
+" CtrlP stuff
+map \] :CtrlP<cr>
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  'vendor/ruby$\|\.git$',
+  \ 'file': '\.DS_Store',
+  \ }
 
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 
@@ -190,7 +194,7 @@ let g:Powerline_symbols='fancy'
 
 
 " Vi's wildignore
-set wildignore+=*.png,*.sp*,*.sqlite3,*.jpg,*.jpeg,vendor/ruby/**
+set wildignore+=*.png,*.sp*,*.sqlite3,*.jpg,*.jpeg
 
 " Make supertab use omnicomplete
 let g:SuperTabDefaultCompletionType = "context"
