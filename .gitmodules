@@ -1,6 +1,6 @@
 [submodule "snippets"]
 	path = snippets
-	url = git@github.com:vinibaggio/snipmate-snippets.git
+	url = https://github.com/honza/snipmate-snippets.git
 [submodule "bundle/vim-rails"]
 	path = bundle/vim-rails
 	url = git://github.com/tpope/vim-rails.git

@@ -180,8 +180,7 @@ let g:ctrlp_custom_ignore = {
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 
 " I don't want the original snippmate snippets
-let g:snippets_dir='~/.vim/snippets'
-source ~/.vim/snippets/support_functions.vim
+let g:snippets_dir='~/.vim/snippets/snippets'
 
 set laststatus=2
 
