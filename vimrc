@@ -179,9 +179,6 @@ let g:ctrlp_custom_ignore = {
 
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 
-" I don't want the original snippmate snippets
-let g:snipMate['snippet_dirs']='~/.vim/snippets/snippets/'
-
 set laststatus=2
 
 let g:Powerline_symbols='fancy'
@@ -201,12 +198,6 @@ let g:SuperTabDefaultCompletionType = "context"
 " Tagbar
 let g:tagbar_usearrows = 1
 nmap <leader>l :TagbarToggle<CR>
-
-" Settings for vim clojure
-let g:clj_highlight_builtins=1      " Highlight Clojure's builtins
-let g:clj_paren_rainbow=1           " Rainbow parentheses'!
-let vimclojure#WantNailgun = 1
-let vimclojure#NailgunClient = "/Users/vinibaggio/.vim/bundle/vim-clojure/ng"
 
 " RTF pygmentize
 let g:rtfp_theme = 'friendly'
