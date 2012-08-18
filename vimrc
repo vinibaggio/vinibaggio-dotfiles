@@ -31,9 +31,9 @@ set textwidth=79
 set formatoptions=qrn1
 
 " Expand buffer when switching
-set switchbuf=useopen
-set winwidth=100
-set winheight=25
+" set switchbuf=useopen
+" set winwidth=100
+" set winheight=25
 
 " Expand path in command
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
@@ -46,16 +46,16 @@ endif
 nnoremap <leader><space> :noh<cr>
 
 " Learn correctly, stupid
-" nnoremap <up> <nop>
-" nnoremap <down> <nop>
-" nnoremap <left> <nop>
-" nnoremap <right> <nop>
-" inoremap <up> <nop>
-" inoremap <down> <nop>
-" inoremap <left> <nop>
-" inoremap <right> <nop>
-" nnoremap j gj
-" nnoremap k gk
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+nnoremap j gj
+nnoremap k gk
 
 " As seen on Vimcasts, expand path for the current file
 let mapleader=','
@@ -67,8 +67,6 @@ map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>s :set spell<CR>
 map <leader>S :set nospell<CR>
 map <leader>r :so ~/.vimrc<CR>
-nnoremap <leader><leader> <c-^>
-nnoremap <leader>t :TagbarToggle<CR>
 
 " As seen on Vimcasts
 if has("autocmd")
@@ -89,10 +87,6 @@ if has("autocmd")
   " Automatically remove whitespaces while saving files
   " autocmd BufWritePre *.snippet,*.yml,*.rb,*.html,*.css,*.erb,*.haml :call <SID>StripTrailingWhitespaces()
 endif
-
-" Load pathogen
-call pathogen#infect()
-call pathogen#helptags()
 
 " As seen on Vimcasts
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
@@ -165,40 +159,15 @@ nnoremap ; :
 vmap Q gq
 nmap Q gqap
 
-" Command r and Command R
-autocmd User Rails nnoremap <buffer> <D-r> :<C-U>Rake<CR>
-autocmd User Rails nnoremap <buffer> <D-R> :<C-U>.Rake<CR>
-
-" CtrlP stuff
-map \] :CtrlP<cr>
-
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  'vendor/ruby$\|\.git$',
-  \ 'file': '\.DS_Store',
-  \ }
-
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 
 set laststatus=2
 
-let g:Powerline_symbols='fancy'
+" let g:Powerline_symbols='fancy'
 
 " formatting text
 " set formatprg=par
 " set textwidth=80
 " set formatoptions+=t
 
-
-" Vi's wildignore
 set wildignore+=*.png,*.sp*,*.sqlite3,*.jpg,*.jpeg
-
-" Make supertab use omnicomplete
-let g:SuperTabDefaultCompletionType = "context"
-
-" Tagbar
-let g:tagbar_usearrows = 1
-nmap <leader>l :TagbarToggle<CR>
-
-" RTF pygmentize
-let g:rtfp_theme = 'friendly'
-let g:rtfp_font = 'Inconsolata'
