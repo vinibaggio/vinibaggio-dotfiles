@@ -1,12 +1,11 @@
 source $HOME/.vimrc
 
-" colorscheme Tomorrow-Night-Bright
-colorscheme lanai
+colorscheme Tomorrow-Night
 set gfn=Inconsolata-dz:h14
 set guioptions=egmrt
 set showtabline=2
 
-set transparency=5
+set transparency=0
 
 set lines=50
 set columns=175
