@@ -20,21 +20,22 @@ Bundle 'git@github.com:vim-scripts/matchit.zip.git'
 Bundle 'git@github.com:tomasr/molokai.git'
 Bundle 'git@github.com:pangloss/vim-javascript.git'
 Bundle 'git@github.com:chriskempson/tomorrow-theme.git', {'rtp':'vim/'}
-" Bundle 'puppetlabs/puppet-syntax-vim'
 Bundle 'git@github.com:derekwyatt/vim-scala.git'
 Bundle 'othree/html5.vim.git'
+
+Bundle 'git://github.com/tpope/vim-dispatch.git'
+Bundle 'git://github.com/lambdalisue/nodeunit.vim.git'
+" Bundle 'puppetlabs/puppet-syntax-vim'
 " Bundle 'gre/play2vim'
 
 Bundle 'majutsushi/tagbar'
 
-" vim-snipmate dependencies
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/snipmate-snippets'
+Bundle 'git://github.com/MarcWeber/ultisnips.git'
+Bundle 'git://github.com/honza/vim-snippets.git'
 
-" Bundle 'wting/rust.vim'
 " Bundle "uggedal/go-vim.git"
+
+set backspace=indent,eol,start
 
 filetype plugin indent on
 
@@ -104,7 +105,8 @@ map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 map <leader>s :set spell<CR>
 map <leader>S :set nospell<CR>
-map <leader>r :so ~/.vimrc<CR>
+map <leader>R :so ~/.vimrc<CR>
+map <leader>r :w<CR>:Dispatch<CR>
 map <leader>t :TagbarToggle<CR>
 
 " As seen on Vimcasts
@@ -212,3 +214,7 @@ set wildignore+=*.png,*.sp*,*.sqlite3,*.jpg,*.jpeg
 vmap <C-c><C-c> <Plug>SendSelectionToTmux
 nmap <C-c><C-c> <Plug>NormalModeSendToTmux
 nmap <C-c>r <Plug>SetTmuxVars
+
+for f in split(glob('~/.vim/config/*.vim'), '\n')
+  exe 'source' f
+endfor
