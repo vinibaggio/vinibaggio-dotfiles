@@ -30,8 +30,8 @@ Bundle 'git://github.com/lambdalisue/nodeunit.vim.git'
 
 Bundle 'majutsushi/tagbar'
 
-Bundle 'git://github.com/MarcWeber/ultisnips.git'
-Bundle 'git://github.com/honza/vim-snippets.git'
+" Bundle 'git://github.com/MarcWeber/ultisnips.git'
+" Bundle 'git://github.com/honza/vim-snippets.git', {'rtp':'UltiSnips/'}
 
 " Bundle "uggedal/go-vim.git"
 
@@ -82,7 +82,6 @@ if &t_Co > 255
   set colorcolumn=85
 endif
 
-nnoremap <leader><space> :noh<cr>
 
 " Learn correctly, stupid
 nnoremap <up> <nop>
@@ -109,6 +108,8 @@ map <leader>R :so ~/.vimrc<CR>
 map <leader>r :w<CR>:Dispatch<CR>
 map <leader>t :TagbarToggle<CR>
 
+map <leader><space> :noh<CR>
+
 " As seen on Vimcasts
 if has("autocmd")
   " File type detection
@@ -118,7 +119,6 @@ if has("autocmd")
   " Styles depending on file type
   autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
-  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
 
   " Treat different file types as one we know. Example:
   " autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
@@ -175,8 +175,6 @@ map <D-0> :tablast<CR>
 cab W w
 cab Q q
 cab Vsp vsp
-" Map Shift-Tab to autocomplete
-" imap <S-Tab> <C-n>
 
 " Map hashrocket as Textmate
 imap <C-L> <Space>=><Space>
