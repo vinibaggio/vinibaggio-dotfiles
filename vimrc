@@ -14,26 +14,26 @@ Bundle 'git@github.com:tpope/vim-eunuch.git'
 Bundle 'git@github.com:tpope/vim-ragtag.git'
 Bundle 'git@github.com:tpope/vim-surround.git'
 Bundle 'git@github.com:tpope/vim-endwise.git'
-Bundle 'git@github.com:kchmck/vim-coffee-script.git'
 Bundle 'git@github.com:vinibaggio/vim-tubaina.git'
 Bundle 'git@github.com:vim-scripts/matchit.zip.git'
 Bundle 'git@github.com:tomasr/molokai.git'
 Bundle 'git@github.com:pangloss/vim-javascript.git'
 Bundle 'git@github.com:chriskempson/tomorrow-theme.git', {'rtp':'vim/'}
-Bundle 'git@github.com:derekwyatt/vim-scala.git'
 Bundle 'othree/html5.vim.git'
-
+Bundle 'rking/ag.vim'
 Bundle 'git://github.com/tpope/vim-dispatch.git'
 Bundle 'git://github.com/lambdalisue/nodeunit.vim.git'
-" Bundle 'puppetlabs/puppet-syntax-vim'
-" Bundle 'gre/play2vim'
 
 Bundle 'majutsushi/tagbar'
+Bundle 'git@github.com:duganchen/vim-soy.git'
 
+" Bundle 'puppetlabs/puppet-syntax-vim'
+" Bundle 'gre/play2vim'
+" Bundle 'git@github.com:kchmck/vim-coffee-script.git'
 " Bundle 'git://github.com/MarcWeber/ultisnips.git'
 " Bundle 'git://github.com/honza/vim-snippets.git', {'rtp':'UltiSnips/'}
-
-" Bundle "uggedal/go-vim.git"
+" Bundle 'git@github.com:derekwyatt/vim-scala.git'
+" Bundle 'uggedal/go-vim.git'
 
 set backspace=indent,eol,start
 
