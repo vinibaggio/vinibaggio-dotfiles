@@ -1,7 +1,7 @@
 source $HOME/.vimrc
 
 colorscheme Tomorrow-Night
-set gfn=Inconsolata-dz:h14
+set gfn=Inconsolata-dz:h19
 set guioptions=egmrt
 set showtabline=2
 

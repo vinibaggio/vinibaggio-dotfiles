@@ -9,7 +9,6 @@ Bundle 'git@github.com:gmarik/vundle.git'
 Bundle 'git@github.com:tpope/vim-fugitive.git'
 Bundle 'git@github.com:kien/ctrlp.vim.git'
 Bundle 'git@github.com:Lokaltog/vim-powerline.git'
-Bundle 'git@github.com:tpope/vim-rails.git'
 Bundle 'git@github.com:tpope/vim-eunuch.git'
 Bundle 'git@github.com:tpope/vim-ragtag.git'
 Bundle 'git@github.com:tpope/vim-surround.git'
@@ -26,12 +25,17 @@ Bundle 'git://github.com/lambdalisue/nodeunit.vim.git'
 
 Bundle 'majutsushi/tagbar'
 Bundle 'git@github.com:duganchen/vim-soy.git'
+Bundle 'git@github.com:groenewege/vim-less.git'
+Bundle 'git@github.com:hail2u/vim-css3-syntax.git'
+Bundle 'git@github.com:skammer/vim-css-color.git'
+Bundle 'git@github.com:SirVer/ultisnips.git'
+Bundle 'git@github.com:Valloric/YouCompleteMe.git'
 
+" Bundle 'git://github.com/digitaltoad/vim-jade.git'
+" Bundle 'git@github.com:tpope/vim-rails.git'
 " Bundle 'puppetlabs/puppet-syntax-vim'
 " Bundle 'gre/play2vim'
 " Bundle 'git@github.com:kchmck/vim-coffee-script.git'
-" Bundle 'git://github.com/MarcWeber/ultisnips.git'
-" Bundle 'git://github.com/honza/vim-snippets.git', {'rtp':'UltiSnips/'}
 " Bundle 'git@github.com:derekwyatt/vim-scala.git'
 " Bundle 'uggedal/go-vim.git'
 
@@ -40,7 +44,7 @@ set backspace=indent,eol,start
 filetype plugin indent on
 
 let g:custom_ignore = {
-  \ 'dir': '\.git|vendor/bundle|tmp'
+  \ 'dir': '\.git|vendor/bundle|tmp|node_modules'
   \ }
 
 " Display line numbers and information ruler
@@ -175,9 +179,6 @@ map <D-0> :tablast<CR>
 cab W w
 cab Q q
 cab Vsp vsp
-
-" Map hashrocket as Textmate
-imap <C-L> <Space>=><Space>
 
 " I hate Y behavior, isn't natural for me
 " so Y now copies until the end of the line
