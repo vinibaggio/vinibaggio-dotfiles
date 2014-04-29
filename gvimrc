@@ -1,9 +1,11 @@
 source $HOME/.vimrc
 
-colorscheme Tomorrow-Night
+set background=dark
+colorscheme base16-solarized
 set gfn=Inconsolata-dz:h19
 set guioptions=egmrt
 set showtabline=2
+set bg=light
 
 set transparency=0
 

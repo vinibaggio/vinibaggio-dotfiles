@@ -17,11 +17,12 @@ Bundle 'git@github.com:vinibaggio/vim-tubaina.git'
 Bundle 'git@github.com:vim-scripts/matchit.zip.git'
 Bundle 'git@github.com:tomasr/molokai.git'
 Bundle 'git@github.com:pangloss/vim-javascript.git'
-Bundle 'git@github.com:chriskempson/tomorrow-theme.git', {'rtp':'vim/'}
+" Bundle 'git@github.com:chriskempson/tomorrow-theme.git', {'rtp':'vim/'}
 Bundle 'othree/html5.vim.git'
 Bundle 'rking/ag.vim'
 Bundle 'git://github.com/tpope/vim-dispatch.git'
 Bundle 'git://github.com/lambdalisue/nodeunit.vim.git'
+Bundle 'chriskempson/base16-vim'
 
 Bundle 'majutsushi/tagbar'
 Bundle 'git@github.com:duganchen/vim-soy.git'
@@ -30,6 +31,7 @@ Bundle 'git@github.com:hail2u/vim-css3-syntax.git'
 Bundle 'git@github.com:skammer/vim-css-color.git'
 Bundle 'git@github.com:SirVer/ultisnips.git'
 Bundle 'git@github.com:Valloric/YouCompleteMe.git'
+Bundle 'git@github.com:klen/python-mode.git'
 
 " Bundle 'git://github.com/digitaltoad/vim-jade.git'
 " Bundle 'git@github.com:tpope/vim-rails.git'
@@ -81,8 +83,11 @@ set formatoptions=qrn1
 " Expand path in command
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
+set background=dark
+let base16colorspace=256
+
 if &t_Co > 255
-  colorscheme Tomorrow-Night
+  colorscheme base16-tomorrow
   set colorcolumn=85
 endif
 
@@ -122,7 +127,6 @@ if has("autocmd")
   set ts=2 sts=2 sw=2 expandtab
   " Styles depending on file type
   autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
 
   " Treat different file types as one we know. Example:
   " autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
