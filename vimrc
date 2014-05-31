@@ -24,6 +24,7 @@ Bundle 'git://github.com/tpope/vim-dispatch.git'
 Bundle 'git://github.com/lambdalisue/nodeunit.vim.git'
 Bundle 'chriskempson/base16-vim'
 
+Bundle 'chase/vim-ansible-yaml'
 Bundle 'majutsushi/tagbar'
 Bundle 'git@github.com:duganchen/vim-soy.git'
 Bundle 'git@github.com:groenewege/vim-less.git'
