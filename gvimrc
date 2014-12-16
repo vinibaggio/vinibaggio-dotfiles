@@ -2,10 +2,10 @@ source $HOME/.vimrc
 
 set background=dark
 colorscheme base16-solarized
-set gfn=Inconsolata-dz:h19
+set gfn=Inconsolata-dz:h14
 set guioptions=egmrt
 set showtabline=2
-set bg=light
+set bg=dark
 
 set transparency=0
 

@@ -1,53 +1,63 @@
-
+set nocompatible
 syntax on
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'git@github.com:gmarik/vundle.git'
-Bundle 'git@github.com:tpope/vim-fugitive.git'
-Bundle 'git@github.com:kien/ctrlp.vim.git'
-Bundle 'git@github.com:Lokaltog/vim-powerline.git'
-Bundle 'git@github.com:tpope/vim-eunuch.git'
-Bundle 'git@github.com:tpope/vim-ragtag.git'
-Bundle 'git@github.com:tpope/vim-surround.git'
-Bundle 'git@github.com:tpope/vim-endwise.git'
-Bundle 'git@github.com:vinibaggio/vim-tubaina.git'
-Bundle 'git@github.com:vim-scripts/matchit.zip.git'
-Bundle 'git@github.com:tomasr/molokai.git'
-Bundle 'git@github.com:pangloss/vim-javascript.git'
-" Bundle 'git@github.com:chriskempson/tomorrow-theme.git', {'rtp':'vim/'}
-Bundle 'othree/html5.vim.git'
-Bundle 'rking/ag.vim'
-Bundle 'git://github.com/tpope/vim-dispatch.git'
-Bundle 'git://github.com/lambdalisue/nodeunit.vim.git'
-Bundle 'chriskempson/base16-vim'
+Plugin 'git@github.com:gmarik/vundle.git'
+Plugin 'git@github.com:tpope/vim-fugitive.git'
+Plugin 'git@github.com:kien/ctrlp.vim.git'
+Plugin 'git@github.com:Lokaltog/vim-powerline.git'
+Plugin 'git@github.com:tpope/vim-eunuch.git'
+Plugin 'git@github.com:tpope/vim-ragtag.git'
+Plugin 'git@github.com:tpope/vim-surround.git'
+Plugin 'git@github.com:tpope/vim-endwise.git'
+Plugin 'git@github.com:tpope/vim-vinegar.git'
+" Plugin 'git@github.com:vinibaggio/vim-tubaina.git'
+Plugin 'git@github.com:vim-scripts/matchit.zip.git'
+Plugin 'git@github.com:tomasr/molokai.git'
+Plugin 'git@github.com:pangloss/vim-javascript.git'
+Plugin 'chase/vim-ansible-yaml'
+Plugin 'majutsushi/tagbar'
+Plugin 'rking/ag.vim'
+Plugin 'chriskempson/base16-vim'
+" Plugin 'git@github.com:chriskempson/tomorrow-theme.git', {'rtp':'vim/'}
+" Plugin 'othree/html5.vim.git'
+" Plugin 'git://github.com/tpope/vim-dispatch.git'
+" Plugin 'git://github.com/lambdalisue/nodeunit.vim.git'
 
-Bundle 'chase/vim-ansible-yaml'
-Bundle 'majutsushi/tagbar'
-Bundle 'git@github.com:duganchen/vim-soy.git'
-Bundle 'git@github.com:groenewege/vim-less.git'
-Bundle 'git@github.com:hail2u/vim-css3-syntax.git'
-Bundle 'git@github.com:skammer/vim-css-color.git'
-Bundle 'git@github.com:SirVer/ultisnips.git'
-Bundle 'git@github.com:Valloric/YouCompleteMe.git'
-Bundle 'git@github.com:klen/python-mode.git'
+" Plugin 'git@github.com:Glench/Vim-Jinja2-Syntax.git'
+" Plugin 'git@github.com:duganchen/vim-soy.git'
+" Plugin 'git@github.com:groenewege/vim-less.git'
+" Plugin 'git@github.com:hail2u/vim-css3-syntax.git'
+" Plugin 'git@github.com:skammer/vim-css-color.git'
+Plugin 'git@github.com:SirVer/ultisnips.git'
+Plugin 'git@github.com:honza/vim-snippets.git'
+Plugin 'git@github.com:Valloric/YouCompleteMe.git'
+Plugin 'git@github.com:klen/python-mode.git'
+Plugin 'fatih/vim-go'
+Plugin 'benmills/vim-golang-alternate'
+" Plugin 'vim-scripts/dbext.vim'
+" Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'rafaelfranca/rtf_pygmentize'
 
-" Bundle 'git://github.com/digitaltoad/vim-jade.git'
-" Bundle 'git@github.com:tpope/vim-rails.git'
-" Bundle 'puppetlabs/puppet-syntax-vim'
-" Bundle 'gre/play2vim'
-" Bundle 'git@github.com:kchmck/vim-coffee-script.git'
-" Bundle 'git@github.com:derekwyatt/vim-scala.git'
-" Bundle 'uggedal/go-vim.git'
+" Plugin 'git://github.com/digitaltoad/vim-jade.git'
+" Plugin 'git@github.com:tpope/vim-rails.git'
+" Plugin 'puppetlabs/puppet-syntax-vim'
+" Plugin 'gre/play2vim'
+Plugin 'git@github.com:kchmck/vim-coffee-script.git'
+" Plugin 'git@github.com:derekwyatt/vim-scala.git'
+"
+
+call vundle#end()
+filetype plugin indent on
 
 set backspace=indent,eol,start
 
-filetype plugin indent on
 
-let g:custom_ignore = {
-  \ 'dir': '\.git|vendor/bundle|tmp|node_modules'
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\.git|vendor/bundle|tmp|node_modules|.orig'
   \ }
 
 " Display line numbers and information ruler
@@ -188,8 +198,6 @@ cab Vsp vsp
 " I hate Y behavior, isn't natural for me
 " so Y now copies until the end of the line
 nnoremap Y y$
-
-nnoremap <silent> <leader>T :TagbarToggle<CR>
 
 " TAB idents, STab unindents (thanks hashrocket!)
 vnoremap <silent> <TAB> >gv
