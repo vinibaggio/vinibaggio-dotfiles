@@ -27,6 +27,8 @@ Plugin 'git@github.com:klen/python-mode.git'
 Plugin 'fatih/vim-go'
 Plugin 'benmills/vim-golang-alternate'
 Plugin 'wookiehangover/jshint.vim'
+Plugin 'git@github.com:kchmck/vim-coffee-script.git'
+Plugin 'git@github.com:duganchen/vim-soy.git'
 
 " Plugin 'git@github.com:tomasr/molokai.git'
 " Plugin 'git@github.com:vinibaggio/vim-tubaina.git'
@@ -36,30 +38,23 @@ Plugin 'wookiehangover/jshint.vim'
 " Plugin 'git://github.com/lambdalisue/nodeunit.vim.git'
 
 " Plugin 'git@github.com:Glench/Vim-Jinja2-Syntax.git'
-" Plugin 'git@github.com:duganchen/vim-soy.git'
 " Plugin 'git@github.com:groenewege/vim-less.git'
 " Plugin 'git@github.com:hail2u/vim-css3-syntax.git'
 " Plugin 'git@github.com:skammer/vim-css-color.git'
 " Plugin 'vim-scripts/dbext.vim'
 " Plugin 'mustache/vim-mustache-handlebars'
-" Plugin 'rafaelfranca/rtf_pygmentize'
+Plugin 'rafaelfranca/rtf_pygmentize'
 
 " Plugin 'git://github.com/digitaltoad/vim-jade.git'
 " Plugin 'git@github.com:tpope/vim-rails.git'
 " Plugin 'puppetlabs/puppet-syntax-vim'
 " Plugin 'gre/play2vim'
-" Plugin 'git@github.com:kchmck/vim-coffee-script.git'
 " Plugin 'git@github.com:derekwyatt/vim-scala.git'
 
 call vundle#end()
 filetype plugin indent on
 
 set backspace=indent,eol,start
-
-
-let g:ctrlp_custom_ignore = {
-  \ 'dir': '\.git|vendor/bundle|tmp|node_modules|.orig'
-  \ }
 
 " Display line numbers and information ruler
 set number
@@ -126,8 +121,6 @@ map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>s :set spell<CR>
 map <leader>S :set nospell<CR>
 map <leader>R :so ~/.vimrc<CR>
-map <leader>r :w<CR>:Dispatch<CR>
-map <leader>t :TagbarToggle<CR>
 
 map <leader><space> :noh<CR>
 
