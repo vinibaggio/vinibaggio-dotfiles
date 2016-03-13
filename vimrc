@@ -15,7 +15,7 @@ Plugin 'git@github.com:tpope/vim-surround.git'
 Plugin 'git@github.com:tpope/vim-endwise.git'
 Plugin 'git@github.com:tpope/vim-vinegar.git'
 Plugin 'git@github.com:vim-scripts/matchit.zip.git'
-Plugin 'git@github.com:pangloss/vim-javascript.git'
+Plugin 'othree/yajs.vim'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'majutsushi/tagbar'
 Plugin 'rking/ag.vim'
@@ -25,10 +25,10 @@ Plugin 'git@github.com:honza/vim-snippets.git'
 Plugin 'git@github.com:Valloric/YouCompleteMe.git'
 Plugin 'git@github.com:klen/python-mode.git'
 Plugin 'fatih/vim-go'
-Plugin 'benmills/vim-golang-alternate'
-Plugin 'wookiehangover/jshint.vim'
 Plugin 'git@github.com:kchmck/vim-coffee-script.git'
 Plugin 'git@github.com:duganchen/vim-soy.git'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'scrooloose/syntastic'
 
 " Plugin 'git@github.com:tomasr/molokai.git'
 " Plugin 'git@github.com:vinibaggio/vim-tubaina.git'
@@ -90,11 +90,11 @@ set formatoptions=qrn1
 " Expand path in command
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
-set background=dark
-let base16colorspace=256
+" let base16colorspace=256
 
+set bg=dark
 if &t_Co > 255
-  colorscheme base16-tomorrow
+  colorscheme base16-solarized
   set colorcolumn=85
 endif
 

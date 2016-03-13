@@ -1,8 +1,9 @@
 source $HOME/.vimrc
 
-set background=light
+set background=dark
+let base16colorspace=256
 colorscheme base16-solarized
-set gfn=Inconsolata-dz:h14
+set gfn=Hack:h14
 set guioptions=egmrt
 set showtabline=2
 

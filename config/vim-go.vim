@@ -1,4 +1,5 @@
 let $GOPATH = $HOME."/code/golang:".$HOME."/code/mono/go/src/"
+let $GOROOT = "/usr/local/Cellar/go/1.5.2/libexec"
 let $PATH = $PATH.":".$HOME."/code/golang/bin/"
 let g:go_bin_path = $HOME."/code/golang/bin"
 let g:go_fmt_command = "goimports"
