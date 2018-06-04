@@ -2,56 +2,62 @@ set nocompatible
 syntax on
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'git@github.com:tpope/vim-fugitive.git'
-Plugin 'git@github.com:kien/ctrlp.vim.git'
-Plugin 'git@github.com:Lokaltog/vim-powerline.git'
-Plugin 'git@github.com:tpope/vim-eunuch.git'
-Plugin 'git@github.com:tpope/vim-ragtag.git'
-Plugin 'git@github.com:tpope/vim-surround.git'
-Plugin 'git@github.com:tpope/vim-endwise.git'
-Plugin 'git@github.com:tpope/vim-vinegar.git'
-Plugin 'git@github.com:vim-scripts/matchit.zip.git'
-Plugin 'othree/yajs.vim'
-Plugin 'chase/vim-ansible-yaml'
-Plugin 'majutsushi/tagbar'
-Plugin 'rking/ag.vim'
-Plugin 'chriskempson/base16-vim'
-Plugin 'git@github.com:SirVer/ultisnips.git'
-Plugin 'git@github.com:honza/vim-snippets.git'
-Plugin 'git@github.com:Valloric/YouCompleteMe.git'
-Plugin 'git@github.com:klen/python-mode.git'
-Plugin 'fatih/vim-go'
-Plugin 'git@github.com:kchmck/vim-coffee-script.git'
-Plugin 'git@github.com:duganchen/vim-soy.git'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'scrooloose/syntastic'
+" Base
+Plug 'git@github.com:tpope/vim-fugitive.git'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'vim-airline/vim-airline'
+Plug 'git@github.com:tpope/vim-eunuch.git'
+Plug 'git@github.com:tpope/vim-ragtag.git'
+Plug 'git@github.com:tpope/vim-surround.git'
+Plug 'git@github.com:tpope/vim-endwise.git'
+Plug 'git@github.com:tpope/vim-vinegar.git'
+Plug 'git@github.com:tpope/vim-abolish.git'
+Plug 'git@github.com:tpope/vim-repeat.git'
+Plug 'git@github.com:vim-scripts/matchit.zip.git'
+Plug 'majutsushi/tagbar'
+Plug 'rking/ag.vim'
+Plug 'chriskempson/base16-vim'
+Plug 'git@github.com:SirVer/ultisnips.git'
+Plug 'git@github.com:honza/vim-snippets.git'
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'w0rp/ale'
 
-" Plugin 'git@github.com:tomasr/molokai.git'
-" Plugin 'git@github.com:vinibaggio/vim-tubaina.git'
-" Plugin 'git@github.com:chriskempson/tomorrow-theme.git', {'rtp':'vim/'}
-" Plugin 'othree/html5.vim.git'
-" Plugin 'git://github.com/tpope/vim-dispatch.git'
-" Plugin 'git://github.com/lambdalisue/nodeunit.vim.git'
+" Languages
+Plug 'fatih/vim-go'
+Plug 'git@github.com:klen/python-mode.git'
 
-" Plugin 'git@github.com:Glench/Vim-Jinja2-Syntax.git'
-" Plugin 'git@github.com:groenewege/vim-less.git'
-" Plugin 'git@github.com:hail2u/vim-css3-syntax.git'
-" Plugin 'git@github.com:skammer/vim-css-color.git'
-" Plugin 'vim-scripts/dbext.vim'
-" Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'rafaelfranca/rtf_pygmentize'
+" Web
+" Plug 'git@github.com:duganchen/vim-soy.git'
+Plug 'mustache/vim-mustache-handlebars'
 
-" Plugin 'git://github.com/digitaltoad/vim-jade.git'
-" Plugin 'git@github.com:tpope/vim-rails.git'
-" Plugin 'puppetlabs/puppet-syntax-vim'
-" Plugin 'gre/play2vim'
-" Plugin 'git@github.com:derekwyatt/vim-scala.git'
+" Plug 'scrooloose/syntastic'
+" Plug 'othree/yajs.vim'
+" Plug 'chase/vim-ansible-yaml'
+" Plug 'git@github.com:tomasr/molokai.git'
+" Plug 'git@github.com:vinibaggio/vim-tubaina.git'
+" Plug 'git@github.com:chriskempson/tomorrow-theme.git', {'rtp':'vim/'}
+" Plug 'othree/html5.vim.git'
+" Plug 'git://github.com/tpope/vim-dispatch.git'
+" Plug 'git://github.com/lambdalisue/nodeunit.vim.git'
 
-call vundle#end()
+" Plug 'git@github.com:Glench/Vim-Jinja2-Syntax.git'
+" Plug 'git@github.com:groenewege/vim-less.git'
+" Plug 'git@github.com:hail2u/vim-css3-syntax.git'
+" Plug 'git@github.com:skammer/vim-css-color.git'
+" Plug 'vim-scripts/dbext.vim'
+" Plug 'mustache/vim-mustache-handlebars'
+
+" Plug 'git://github.com/digitaltoad/vim-jade.git'
+" Plug 'git@github.com:tpope/vim-rails.git'
+" Plug 'puppetlabs/puppet-syntax-vim'
+" Plug 'gre/play2vim'
+" Plug 'git@github.com:derekwyatt/vim-scala.git'
+
+call plug#end()
+
 filetype plugin indent on
 
 set backspace=indent,eol,start
@@ -93,8 +99,8 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 " let base16colorspace=256
 
 set bg=dark
+colorscheme mustang
 if &t_Co > 255
-  colorscheme base16-solarized
   set colorcolumn=85
 endif
 

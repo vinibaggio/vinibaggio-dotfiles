@@ -1,9 +1,9 @@
 source $HOME/.vimrc
 
-set background=dark
+set background=light
 let base16colorspace=256
-colorscheme base16-solarized
-set gfn=Hack:h14
+colorscheme base16-grayscale-light
+set gfn=Hack:h12
 set guioptions=egmrt
 set showtabline=2
 
@@ -15,9 +15,9 @@ set columns=175
 set cursorline
 
 " Show invisible chars with \l
-set list
-nmap <leader>l :set list!<CR>
-set listchars=tab:▸\ ,eol:¬
+"set list
+"nmap <leader>l :set list!<CR>
+"set listchars=tab:▸\ ,eol:¬
 
 
 " Vim's relative number FTW!
