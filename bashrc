@@ -1,5 +1,9 @@
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+
 eval "$(fasd --init auto)"
 
 # fasd aliases
@@ -15,7 +19,3 @@ alias zz='fasd_cd -d -i' # cd with interactive selection
 # git aliases
 alias git='hub'
 alias gpr='git pull-request'
-
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
