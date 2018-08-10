@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ln -s vinibaggio-profile/bashrc ~/.profile
+
 # setup the basics
 sudo apt-get install build-essential curl file git
 sudo add-apt-repository ppa:jonathonf/vim
@@ -11,4 +13,4 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/i
 echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"' >>~/.profile
 echo 'export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"' >>~/.profile
 echo 'export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"' >>~/.profile
-echo '. $HOME/.bashrc' >>~/.profile
+

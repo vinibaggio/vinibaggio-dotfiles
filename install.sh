@@ -1,6 +1,10 @@
 #!/bin/bash
 
-install-linux.sh
+set +x
+
+if [ "$(uname)" == "Linux" ]; then
+  install-linux.sh
+fi
 
 cd $HOME
 ln -s vinibaggio-profile/vim .vim
@@ -12,4 +16,4 @@ ln -s vinibaggio-profile/bashrc .bashrc
 vim +PlugInstall +qall
 
 # Install other packages
-brew install fzf fasd hub
+brew install fzf fasd hub mosh
