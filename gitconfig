@@ -1,3 +1,8 @@
 [user]
 	email = vinibaggio@gmail.com
 	name = Vinicius Baggio Fuentes
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
