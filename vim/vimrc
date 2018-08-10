@@ -18,7 +18,7 @@ Plug 'git@github.com:tpope/vim-abolish.git'
 Plug 'git@github.com:tpope/vim-repeat.git'
 Plug 'git@github.com:vim-scripts/matchit.zip.git'
 Plug 'majutsushi/tagbar'
-Plug 'rking/ag.vim'
+" Plug 'rking/ag.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'git@github.com:SirVer/ultisnips.git'
 Plug 'git@github.com:honza/vim-snippets.git'
@@ -27,34 +27,19 @@ Plug 'w0rp/ale'
 
 " Languages
 Plug 'fatih/vim-go'
-Plug 'git@github.com:klen/python-mode.git'
+" Plug 'git@github.com:klen/python-mode.git'
 
 " Web
 " Plug 'git@github.com:duganchen/vim-soy.git'
-Plug 'mustache/vim-mustache-handlebars'
+" Plug 'mustache/vim-mustache-handlebars'
 
 " Plug 'scrooloose/syntastic'
 " Plug 'othree/yajs.vim'
 " Plug 'chase/vim-ansible-yaml'
 " Plug 'git@github.com:tomasr/molokai.git'
-" Plug 'git@github.com:vinibaggio/vim-tubaina.git'
-" Plug 'git@github.com:chriskempson/tomorrow-theme.git', {'rtp':'vim/'}
-" Plug 'othree/html5.vim.git'
-" Plug 'git://github.com/tpope/vim-dispatch.git'
-" Plug 'git://github.com/lambdalisue/nodeunit.vim.git'
 
-" Plug 'git@github.com:Glench/Vim-Jinja2-Syntax.git'
-" Plug 'git@github.com:groenewege/vim-less.git'
-" Plug 'git@github.com:hail2u/vim-css3-syntax.git'
-" Plug 'git@github.com:skammer/vim-css-color.git'
-" Plug 'vim-scripts/dbext.vim'
-" Plug 'mustache/vim-mustache-handlebars'
-
-" Plug 'git://github.com/digitaltoad/vim-jade.git'
 " Plug 'git@github.com:tpope/vim-rails.git'
-" Plug 'puppetlabs/puppet-syntax-vim'
 " Plug 'gre/play2vim'
-" Plug 'git@github.com:derekwyatt/vim-scala.git'
 
 call plug#end()
 
