@@ -16,4 +16,4 @@ ln -s vinibaggio-profile/bashrc .bashrc
 vim +PlugInstall +qall
 
 # Install other packages
-brew install fzf fasd hub mosh
+brew install fzf fasd hub
