@@ -7,10 +7,10 @@ if [ "$(uname)" == "Linux" ]; then
 fi
 
 cd $HOME
-ln -s vinibaggio-profile/vim .vim
-ln -s vinibaggio-profile/vim/vimrc .vimrc
-ln -s vinibaggio-profile/gitconfig .gitconfig
-ln -s vinibaggio-profile/bashrc .bashrc
+ln -s code/vinibaggio-dotfiles/vim .vim
+ln -s code/vinibaggio-dotfiles/vim/vimrc .vimrc
+ln -s code/vinibaggio-dotfiles/gitconfig .gitconfig
+ln -s code/vinibaggio-dotfiles/bashrc .bashrc
 
 # Install vim packages
 vim +PlugInstall +qall
