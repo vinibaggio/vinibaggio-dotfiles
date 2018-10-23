@@ -20,10 +20,13 @@ Plug 'git@github.com:vim-scripts/matchit.zip.git'
 Plug 'majutsushi/tagbar'
 " Plug 'rking/ag.vim'
 Plug 'chriskempson/base16-vim'
-Plug 'git@github.com:SirVer/ultisnips.git'
+" Plug 'git@github.com:SirVer/ultisnips.git'
 Plug 'git@github.com:honza/vim-snippets.git'
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'w0rp/ale'
+
+" Writing
+Plug 'junegunn/goyo.vim'
+Plug 'reedes/vim-pencil'
 
 " Languages
 Plug 'fatih/vim-go'
