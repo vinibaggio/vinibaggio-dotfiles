@@ -22,7 +22,7 @@ brew "lzip"
 brew "macvim", args: ["with-override-system-vim", "with-python@2"]
 brew "ripgrep"
 brew "rlwrap"
-brew "ruby"
+brew "zsh"
 cask "1password"
 cask "alfred"
 cask "android-platform-tools"
