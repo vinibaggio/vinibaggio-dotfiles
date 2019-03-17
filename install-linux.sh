@@ -1,7 +1,5 @@
 #!/bin/bash
 
-ln -s vinibaggio-profile/bashrc ~/.profile
-
 # setup the basics
 sudo apt-get install build-essential curl file git autoconf
 sudo add-apt-repository ppa:jonathonf/vim
