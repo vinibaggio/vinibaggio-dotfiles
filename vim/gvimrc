@@ -2,8 +2,8 @@ source $HOME/.vimrc
 
 set background=light
 let base16colorspace=256
-" colorscheme base16-grayscale-light
-set gfn=Hack:h12
+colorscheme base16-grayscale-light
+set gfn=Hack\ Nerd\ Font:h14
 set guioptions=egmrt
 set showtabline=2
 

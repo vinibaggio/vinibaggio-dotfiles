@@ -19,7 +19,10 @@ Plug 'git@github.com:tpope/vim-repeat.git'
 Plug 'git@github.com:vim-scripts/matchit.zip.git'
 Plug 'majutsushi/tagbar'
 " Plug 'rking/ag.vim'
-Plug 'chriskempson/base16-vim'
+"
+
+Plug 'danielwe/base16-vim'
+
 " Plug 'git@github.com:SirVer/ultisnips.git'
 Plug 'git@github.com:honza/vim-snippets.git'
 Plug 'w0rp/ale'
@@ -33,16 +36,8 @@ Plug 'fatih/vim-go'
 " Plug 'git@github.com:klen/python-mode.git'
 
 " Web
-" Plug 'git@github.com:duganchen/vim-soy.git'
-" Plug 'mustache/vim-mustache-handlebars'
-
-" Plug 'scrooloose/syntastic'
-" Plug 'othree/yajs.vim'
-" Plug 'chase/vim-ansible-yaml'
-" Plug 'git@github.com:tomasr/molokai.git'
-
-" Plug 'git@github.com:tpope/vim-rails.git'
-" Plug 'gre/play2vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 call plug#end()
 

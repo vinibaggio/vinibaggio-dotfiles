@@ -4,6 +4,7 @@ eval "$(fasd --init auto)"
 
 source $HOME/code/vinibaggio-dotfiles/shell_aliases
 [ -f ~/.zshrc_private ] && source ~/.zshrc_private
+[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
 
 export PATH="$PATH:$HOME/code/vinibaggio-private/bin"
 export PATH="$PATH:$HOME/code/vinibaggio-dotfiles/bin"

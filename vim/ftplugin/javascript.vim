@@ -1,3 +1,3 @@
-setlocal sw=2
-setlocal ts=2
-let b:dispatch = 'nodeunit %'
+let g:javascript_plugin_flow = 1
+let g:jsx_ext_required = 0
+
