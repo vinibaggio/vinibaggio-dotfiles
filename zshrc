@@ -6,8 +6,11 @@ source $HOME/code/vinibaggio-dotfiles/shell_aliases
 [ -f ~/.zshrc_private ] && source ~/.zshrc_private
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
 
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
 export PATH="$PATH:$HOME/code/vinibaggio-private/bin"
 export PATH="$PATH:$HOME/code/vinibaggio-dotfiles/bin"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 export EDITOR=vim
 
@@ -68,3 +71,6 @@ setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 setopt inc_append_history     # add commands to HISTFILE in order of execution
 setopt share_history          # share command history data
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
