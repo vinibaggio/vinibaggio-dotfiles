@@ -7,3 +7,5 @@ source $HOME/code/vinibaggio-dotfiles/shell_aliases
 export PATH="$PATH:$HOME/code/vinibaggio-private/bin"
 export PATH="$PATH:$HOME/code/vinibaggio-dotfiles/bin"
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

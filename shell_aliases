@@ -13,3 +13,7 @@ alias zz='fasd_cd -d -i' # cd with interactive selection
 alias gpr='git pull-request'
 alias gcmp='git compare'
 alias gwip='git ci -a -m "wip"'
+
+if type nvim > /dev/null 2>&1; then
+  alias vim='nvim'
+fi

@@ -18,10 +18,11 @@ test ! -e "$HOME/.vimrc" && ln -s code/vinibaggio-dotfiles/vim/vimrc .vimrc
 test ! -e "$HOME/.gitconfig" && ln -s code/vinibaggio-dotfiles/gitconfig .gitconfig
 test ! -e "$HOME/.bashrc" && ln -s code/vinibaggio-dotfiles/bashrc .bashrc
 test ! -e "$HOME/.zshrc" && ln -s code/vinibaggio-dotfiles/zshrc .zshrc
+test ! -e "$HOME/.zsh_aliases" && ln -s code/vinibaggio-dotfiles/shell_aliases .zsh_aliases
 popd
 
 echo "Installing vim plugins..."
-vim +PlugInstall +qall
+nvim +PlugInstall +qall
 
 echo "Running general bundle"
 brew bundle
