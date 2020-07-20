@@ -13,6 +13,8 @@ fi
 
 echo "Linking config files..."
 pushd $HOME
+mkdir -p .config/nvim
+test ! -e "$HOME/.config/nvim/init.vim" && ln -s code/vinibaggio-dotfiles/init.vim .config/nvim/init.vim
 test ! -e "$HOME/.vim" && ln -s code/vinibaggio-dotfiles/vim .vim
 test ! -e "$HOME/.vimrc" && ln -s code/vinibaggio-dotfiles/vim/vimrc .vimrc
 test ! -e "$HOME/.gitconfig" && ln -s code/vinibaggio-dotfiles/gitconfig .gitconfig
