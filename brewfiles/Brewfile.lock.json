@@ -5,16 +5,16 @@
         "revision": "c3162a3b89a066cf37ad165f5a155da18e70d9f8"
       },
       "homebrew/cask": {
-        "revision": "81cb53b74daf4eb0272297eaa7a5c71a147872ea"
+        "revision": "248e539f405511f3d96c86c1fb62524cd6d2b71f"
       },
       "homebrew/cask-drivers": {
-        "revision": "c8d93db4c34703114aa5d11c7f93bf54b4f8a060"
+        "revision": "a9c3f9402a0d610c303948714627a305767a7c98"
       },
       "homebrew/cask-fonts": {
-        "revision": "58e0c533a980f44042020989ed0bf899eecede7a"
+        "revision": "a0b55e451f35218d0f24f982b0db120b84c598a2"
       },
       "homebrew/core": {
-        "revision": "e59d949ea81f6e6e938ee8de678cfb872043ccc8"
+        "revision": "b83c4a82b10dda15227ef0baca7e98970772766c"
       }
     },
     "brew": {
@@ -306,6 +306,12 @@
         "options": {
           "full_name": "visual-studio-code"
         }
+      },
+      "alfred": {
+        "version": "4.1_1167",
+        "options": {
+          "full_name": "alfred"
+        }
       }
     }
   },
@@ -314,7 +320,7 @@
       "catalina": {
         "HOMEBREW_VERSION": "2.4.8",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "e59d949ea81f6e6e938ee8de678cfb872043ccc8",
+        "Homebrew/homebrew-core": "b83c4a82b10dda15227ef0baca7e98970772766c",
         "CLT": "11.5.0.0.1.1588476445",
         "Xcode": "11.5",
         "macOS": "10.15.6"

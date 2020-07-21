@@ -13,11 +13,9 @@ fi
 
 echo "Linking config files..."
 pushd $HOME
-mkdir -p .config/nvim
-test ! -e "$HOME/.config/nvim/init.vim" && ln -s code/vinibaggio-dotfiles/init.vim .config/nvim/init.vim
+test ! -e "$HOME/.config" && ln -s code/vinibaggio-dotfiles/config .config
 test ! -e "$HOME/.vim" && ln -s code/vinibaggio-dotfiles/vim .vim
 test ! -e "$HOME/.vimrc" && ln -s code/vinibaggio-dotfiles/vim/vimrc .vimrc
-test ! -e "$HOME/.gitconfig" && ln -s code/vinibaggio-dotfiles/gitconfig .gitconfig
 test ! -e "$HOME/.bashrc" && ln -s code/vinibaggio-dotfiles/bashrc .bashrc
 test ! -e "$HOME/.zshrc" && ln -s code/vinibaggio-dotfiles/zshrc .zshrc
 test ! -e "$HOME/.zsh_aliases" && ln -s code/vinibaggio-dotfiles/shell_aliases .zsh_aliases
@@ -39,7 +37,7 @@ fi
 echo "Installing private repo things if exists..."
 if [ -d "$HOME/code/vinibaggio-private" ]; then
   pushd "$HOME/code/vinibaggio-private" 
-  ./install.sh
+  sh ./install.sh
   popd
 fi
 
