@@ -1,3 +1,4 @@
 .netrwhist
 bundle
 vim/plugged
+config/configstore
