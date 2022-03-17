@@ -2,3 +2,4 @@
 bundle
 vim/plugged
 config/configstore
+config/gh/config.yml

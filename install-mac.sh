@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo defaults write -g ApplePressAndHoldEnabled -bool false
+defaults write com.jetbrains.intellij ApplePressAndHoldEnabled -bool false
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 defaults write com.apple.screencapture disable-shadow -bool true
 

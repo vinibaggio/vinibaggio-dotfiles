@@ -3,10 +3,19 @@
 	name = Vinicius Baggio Fuentes
 [alias]
 	co = checkout
+	cob = checkout -b
 	br = branch
 	ci = commit
 	st = status
+	cp = cherry-pick
+  praise = blame
 [push]
 	default = simple
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+
+[core]
+	excludesfile = /Users/vini/.config/git/ignore
+
+[pull]
+	rebase = true
