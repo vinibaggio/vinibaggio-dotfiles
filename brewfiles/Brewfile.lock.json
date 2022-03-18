@@ -5,7 +5,7 @@
         "revision": "36e0f7a5df44761ccf1901877aaf4ed3a2ff8c06"
       },
       "homebrew/cask": {
-        "revision": "afaff25038a77c33c661612fdc39c3cbf52c272b"
+        "revision": "d34ad909aae231dcba891d64ed5c4bd0f50bd8b5"
       },
       "homebrew/cask-drivers": {
         "revision": "ae7aca3172556eb8bb2aff2fef82aa9713fe1bdf"
@@ -14,7 +14,7 @@
         "revision": "21aa88605da3e0de4df9ad64389b5e1a22d8ee28"
       },
       "homebrew/core": {
-        "revision": "70ddf70f0dc679ae42260e3d97caf39e3658ae66"
+        "revision": "6f92487ea4d5f4f580c85141bdf563f7fe567dbe"
       }
     },
     "brew": {
@@ -577,6 +577,30 @@
         "options": {
           "full_name": "flux"
         }
+      },
+      "obsidian": {
+        "version": "0.13.31",
+        "options": {
+          "full_name": "obsidian"
+        }
+      },
+      "choosy": {
+        "version": "2.2.1",
+        "options": {
+          "full_name": "choosy"
+        }
+      },
+      "zoom": {
+        "version": "5.9.6.4993",
+        "options": {
+          "full_name": "zoom"
+        }
+      },
+      "tableplus": {
+        "version": "4.6.2,410",
+        "options": {
+          "full_name": "tableplus"
+        }
       }
     }
   },
@@ -593,9 +617,9 @@
       "monterey": {
         "HOMEBREW_VERSION": "3.4.2",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "70ddf70f0dc679ae42260e3d97caf39e3658ae66",
+        "Homebrew/homebrew-core": "6f92487ea4d5f4f580c85141bdf563f7fe567dbe",
         "CLT": "13.3.0.0.1.1645755326",
-        "Xcode": "13.2.1",
+        "Xcode": "13.3",
         "macOS": "12.3"
       }
     }

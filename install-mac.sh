@@ -22,8 +22,7 @@ defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 cd $HOME/code/vinibaggio-dotfiles/brewfiles && brew bundle
 
 # Install Mac Apple Store specific stuff
-echo "Please install the following in the Mac App Store then press enter"
-echo "Todoist"
-echo "Xcode"
-read -e "..."
-# Todoist
+brew install mas
+mas install 497799835 # xcode
+mas install 585829637 # Todoist
+
