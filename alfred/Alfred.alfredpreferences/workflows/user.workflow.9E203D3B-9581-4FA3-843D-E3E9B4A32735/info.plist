@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.alexlafroscia.go-link</string>
+	<key>connections</key>
+	<dict>
+		<key>8D7D66C0-87ED-4274-A22C-4035B951A11A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CE39CA88-D951-486C-B1B5-A59B7E8ADF28</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>929EC127-6C04-461D-88C5-2681CE0B6347</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8D7D66C0-87ED-4274-A22C-4035B951A11A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>CE39CA88-D951-486C-B1B5-A59B7E8ADF28</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7F3D190C-A983-47F5-8339-38EB2FA54E41</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Alex LaFroscia</string>
+	<key>description</key>
+	<string>Open Go Link in Chrome</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Go Links</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>go/</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Go to "go/{query}"</string>
+				<key>script</key>
+				<string>query=$1
+
+/usr/bin/ruby filter_go_links.rb $query</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Go to "go/{query}"</string>
+				<key>title</key>
+				<string>Launch Go Link in Google Profile</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>929EC127-6C04-461D-88C5-2681CE0B6347</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>http://go/{query}</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>8D7D66C0-87ED-4274-A22C-4035B951A11A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query=$1
+
+/usr/bin/ruby open_url_in_chrome.rb $query</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>7F3D190C-A983-47F5-8339-38EB2FA54E41</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>CE39CA88-D951-486C-B1B5-A59B7E8ADF28</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Help navigating Go Links!
+
+Any regular Go link can be accessed at their regular address.  You can simply type
+
+	go/who
+
+to asscess your Team page, etc.  Other pages are also available, ones that are not found at a "go/..." address.  Applications like Inbox, Gmail, and Keep fall into this category.
+
+Because Go links will only work when you're logging into your company account, this workflow will make an effort to open your preferred Google Chrome profile.  By default, it will look for a profile called "Google", but you can configure it to use a different name in the Environment Variable configuration.</string>
+	<key>uidata</key>
+	<dict>
+		<key>7F3D190C-A983-47F5-8339-38EB2FA54E41</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
+			<key>note</key>
+			<string>Open Link in Chrome</string>
+			<key>xpos</key>
+			<integer>620</integer>
+			<key>ypos</key>
+			<integer>120</integer>
+		</dict>
+		<key>8D7D66C0-87ED-4274-A22C-4035B951A11A</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
+			<key>note</key>
+			<string>Convert query to Go link</string>
+			<key>xpos</key>
+			<integer>280</integer>
+			<key>ypos</key>
+			<integer>50</integer>
+		</dict>
+		<key>929EC127-6C04-461D-88C5-2681CE0B6347</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
+			<key>xpos</key>
+			<integer>30</integer>
+			<key>ypos</key>
+			<integer>20</integer>
+		</dict>
+		<key>CE39CA88-D951-486C-B1B5-A59B7E8ADF28</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
+			<key>note</key>
+			<string>Accept the URL to Open</string>
+			<key>xpos</key>
+			<integer>480</integer>
+			<key>ypos</key>
+			<integer>150</integer>
+		</dict>
+	</dict>
+	<key>variables</key>
+	<dict>
+		<key>CHROME_PROFILE</key>
+		<string>Loom</string>
+		<key>CHROME_VERSION</key>
+		<string>Chrome</string>
+	</dict>
+	<key>version</key>
+	<string>0.6.0</string>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
