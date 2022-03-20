@@ -89,3 +89,4 @@ setopt share_history          # share command history data
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
+. /opt/homebrew/opt/asdf/asdf.sh

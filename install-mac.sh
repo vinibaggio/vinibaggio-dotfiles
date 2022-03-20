@@ -5,6 +5,11 @@ defaults write com.jetbrains.intellij ApplePressAndHoldEnabled -bool false
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 defaults write com.apple.screencapture disable-shadow -bool true
 
+# Disable bullshit autocomplete
+
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool false
+
 
 # Shitty font stuff, see https://tonsky.me/blog/monitors/
 defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
