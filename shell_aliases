@@ -22,3 +22,5 @@ alias gti="git"
 alias git="hub"
 alias wip="git ci -m \"wip\" --no-verify"
 alias uwip="git reset head~1"
+
+alias cat='bat' # cd with interactive selection

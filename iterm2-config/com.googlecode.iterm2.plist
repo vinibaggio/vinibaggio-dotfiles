@@ -12,6 +12,8 @@
 	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
+	<key>IRMemory</key>
+	<integer>4</integer>
 	<key>NeverWarnAboutShortLivedSessions_5FFFFBBC-1817-4CF3-88D7-1627BA9872CB</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_5FFFFBBC-1817-4CF3-88D7-1627BA9872CB_selection</key>
@@ -585,7 +587,7 @@
 				<key>editor</key>
 				<string>com.microsoft.VSCode</string>
 				<key>text</key>
-				<string>/usr/local/bin/webstorm  \1 --line \2</string>
+				<string>/Users/vini/code/vinibaggio-private/bin/webstorm  \1 --line \2</string>
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
