@@ -1,0 +1,9 @@
+#!/bin/bash
+
+date=$(date '+%Y_%m_%d')
+
+branch_name="$(whoami)_${date}_$1"
+
+git fetch origin master
+git co -b $branch_name
+git rebase origin/master

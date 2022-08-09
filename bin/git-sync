@@ -1,2 +1,2 @@
 #!/bin/bash
-git pull --rebase --autostash origin main
+git pull --rebase --autostash origin master
