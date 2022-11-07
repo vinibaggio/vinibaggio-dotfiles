@@ -5,18 +5,18 @@ filetype off
 call plug#begin('~/.vim/plugged')
 
 " Base
-Plug 'git@github.com:tpope/vim-fugitive.git'
+Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'vim-airline/vim-airline'
-Plug 'git@github.com:tpope/vim-eunuch.git'
-Plug 'git@github.com:tpope/vim-ragtag.git'
-Plug 'git@github.com:tpope/vim-surround.git'
-Plug 'git@github.com:tpope/vim-endwise.git'
-Plug 'git@github.com:tpope/vim-vinegar.git'
-Plug 'git@github.com:tpope/vim-abolish.git'
-Plug 'git@github.com:tpope/vim-repeat.git'
-Plug 'git@github.com:vim-scripts/matchit.zip.git'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-repeat'
+Plug 'vim-scripts/matchit.zip'
 Plug 'majutsushi/tagbar'
 " Plug 'rking/ag.vim'
 "
@@ -24,7 +24,7 @@ Plug 'majutsushi/tagbar'
 Plug 'danielwe/base16-vim'
 
 " Plug 'git@github.com:SirVer/ultisnips.git'
-Plug 'git@github.com:honza/vim-snippets.git'
+Plug 'honza/vim-snippets'
 Plug 'w0rp/ale'
 
 " Writing

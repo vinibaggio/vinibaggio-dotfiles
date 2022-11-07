@@ -4,6 +4,7 @@ sudo defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write com.jetbrains.intellij ApplePressAndHoldEnabled -bool false
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 defaults write com.apple.screencapture disable-shadow -bool true
+defaults write com.apple.finder CreateDesktop false
 
 # Disable bullshit autocomplete
 

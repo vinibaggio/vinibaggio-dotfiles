@@ -583,7 +583,7 @@
 			<key>Semantic History</key>
 			<dict>
 				<key>action</key>
-				<string>command</string>
+				<string>best editor</string>
 				<key>editor</key>
 				<string>com.microsoft.VSCode</string>
 				<key>text</key>

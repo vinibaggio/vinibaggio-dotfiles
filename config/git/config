@@ -8,7 +8,8 @@
 	ci = commit
 	st = status
 	cp = cherry-pick
-  praise = blame
+	praise = blame
+	pushf = push --force-with-lease
 [push]
 	default = simple
 
