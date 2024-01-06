@@ -1,5 +1,4 @@
 .netrwhist
-bundle
-vim/plugged
 config/configstore
-config/gh/
+config/gh
+config/hub
