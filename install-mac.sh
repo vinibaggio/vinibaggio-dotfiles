@@ -24,11 +24,3 @@ defaults write com.microsoft.VSCode.helper.NP CGFontRenderingFontSmoothingDisabl
 # Iterm config
 defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/code/vinibaggio-dotfiles/iterm2-config"
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
-
-cd $HOME/code/vinibaggio-dotfiles/brewfiles && brew bundle
-
-# Install Mac Apple Store specific stuff
-brew install mas
-mas install 497799835 # xcode
-mas install 585829637 # Todoist
-

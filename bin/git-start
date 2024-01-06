@@ -1,9 +1,10 @@
 #!/bin/bash
 
 date=$(date '+%Y_%m_%d')
+feature_name="${1// /_}"
 
-branch_name="$(whoami)_${date}_$1"
+branch_name="$(whoami)/${date}/${feature_name}"
 
-git fetch origin master
-git co -b $branch_name
-git rebase origin/master
+git fetch origin main
+git co -b "$branch_name"
+git rebase origin/main
