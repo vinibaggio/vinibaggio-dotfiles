@@ -2,10 +2,11 @@
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 export EDITOR=nvim
 
+export ZSH_CACHE_DIR="$HOME/.cache"
+
 # Plugins
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 antidote load
-
 
 # Load external config config
 source $HOME/code/vinibaggio-dotfiles/zsh/aliases
@@ -14,7 +15,3 @@ source $HOME/code/vinibaggio-private/zsh/zshrc
 # Load my own scripts
 export PATH="$PATH:$HOME/code/vinibaggio-dotfiles/bin"
 
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
