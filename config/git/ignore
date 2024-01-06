@@ -2,3 +2,4 @@
 .idea
 /tmp/
 .tools-versions
+.DS_Store
