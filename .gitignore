@@ -2,3 +2,4 @@
 config/configstore
 config/gh
 config/hub
+config/nvim
