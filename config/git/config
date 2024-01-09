@@ -11,7 +11,7 @@
 	default = simple
 
 [core]
-	excludesfile = /Users/vini/.config/git/ignore
+	excludesfile = /Users/vinibaggio/.config/git/ignore
 
 [pull]
 	rebase = true
