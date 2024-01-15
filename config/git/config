@@ -1,6 +1,7 @@
 [user]
        email = vinibaggio@gmail.com
        name = Vinicius Baggio Fuentes
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA9srFuD1RwIkLxo+FER4WOOuHBgmQ06qMbfSxk8+ATS
 [alias]
 	co = checkout
 	cob = checkout -b
@@ -18,3 +19,7 @@
 
 [pull]
 	rebase = true
+[commit]
+	gpgsign = true
+[gpg]
+	format = ssh

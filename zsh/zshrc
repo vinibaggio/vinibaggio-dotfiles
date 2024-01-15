@@ -15,3 +15,7 @@ source $HOME/code/vinibaggio-private/zsh/zshrc
 # Load my own scripts
 export PATH="$PATH:$HOME/code/vinibaggio-dotfiles/bin"
 
+# If 1password agent file is present, set it as the ssh-agent
+if [ -e $HOME/.1password/agent.sock ]; then
+	export SSH_AUTH_SOCK=$HOME/.1password/agent.sock
+fi
