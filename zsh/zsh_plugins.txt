@@ -1,9 +1,7 @@
 # Stolen from zdotdir
 
-sindresorhus/pure
 
 belak/zsh-utils path:editor
-belak/zsh-utils path:history
 belak/zsh-utils path:utility
 
 zdharma-continuum/fast-syntax-highlighting kind:defer
@@ -13,6 +11,9 @@ belak/zsh-utils path:completion
 
 ohmyzsh/ohmyzsh path:plugins/fasd
 ohmyzsh/ohmyzsh path:plugins/fzf
+ohmyzsh/ohmyzsh path:lib/history.zsh
+
+sindresorhus/pure
 
 # These popular core plugins should be loaded at the end
 zsh-users/zsh-autosuggestions kind:defer
