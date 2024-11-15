@@ -15,6 +15,8 @@ ohmyzsh/ohmyzsh path:lib/history.zsh
 
 sindresorhus/pure
 
+ohmyzsh/ohmyzsh path:plugins/asdf
+
 # These popular core plugins should be loaded at the end
 zsh-users/zsh-autosuggestions kind:defer
 zsh-users/zsh-history-substring-search

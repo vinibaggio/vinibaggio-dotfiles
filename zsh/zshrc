@@ -19,3 +19,14 @@ export PATH="$PATH:$HOME/code/vinibaggio-dotfiles/bin"
 if [ -e $HOME/.1password/agent.sock ]; then
 	export SSH_AUTH_SOCK=$HOME/.1password/agent.sock
 fi
+
+# bun completions
+[ -s "/Users/vinibaggio/.bun/_bun" ] && source "/Users/vinibaggio/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
