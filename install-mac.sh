@@ -22,5 +22,5 @@ defaults write com.microsoft.VSCode.helper.NP CGFontRenderingFontSmoothingDisabl
 
 
 # Iterm config
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/code/vinibaggio-dotfiles/iterm2-config"
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/code/vinibaggio-dotfiles/iterm2-config"
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true

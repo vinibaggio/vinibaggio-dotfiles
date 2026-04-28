@@ -8,9 +8,9 @@ export ZSH_CACHE_DIR="$HOME/.cache"
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 antidote load
 
-# Load external config config
-source $HOME/code/vinibaggio-dotfiles/zsh/aliases
-source $HOME/code/vinibaggio-private/zsh/zshrc
+# Load external config
+source "$HOME/code/vinibaggio-dotfiles/zsh/aliases"
+[ -f "$HOME/code/vinibaggio-private/zsh/zshrc" ] && source "$HOME/code/vinibaggio-private/zsh/zshrc"
 
 # Load my own scripts
 export PATH="$PATH:$HOME/code/vinibaggio-dotfiles/bin"
@@ -21,12 +21,23 @@ if [ -e $HOME/.1password/agent.sock ]; then
 fi
 
 # bun completions
-[ -s "/Users/vinibaggio/.bun/_bun" ] && source "/Users/vinibaggio/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+eval "$(mise activate zsh)"
+export PATH="$HOME/.local/bin:$PATH"
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:$HOME/.lmstudio/bin"
+# End of LM Studio CLI section
+
+# LM Studio local API token (loaded from 1Password)
+if command -v op >/dev/null 2>&1; then
+  export LM_API_TOKEN="$(op read 'op://Private/LM_API_TOKEN/credential' 2>/dev/null)"
+fi
+
+# Pi local LM Studio shortcut
+alias pilocal='pi --provider lm-studio --model google/gemma-4-e4b-pi-32k'
+

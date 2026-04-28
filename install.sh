@@ -11,12 +11,14 @@ elif [ "$(uname)" == "Darwin" ]; then
   ./install-mac.sh
 fi
 
+DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
+
 echo "Linking config files..."
-pushd $HOME
-test ! -e "$HOME/.config" && ln -s code/vinibaggio-dotfiles/config .config
-test ! -e "$HOME/.bashrc" && ln -s code/vinibaggio-dotfiles/bashrc .bashrc
-test ! -e "$HOME/.zshrc" && ln -s code/vinibaggio-dotfiles/zsh/zshrc .zshrc
-test ! -e "$HOME/.zsh_plugins.txt" && ln -s code/vinibaggio-dotfiles/zsh/zsh_plugins.txt .zsh_plugins.txt
+pushd "$HOME"
+test ! -e "$HOME/.config" && ln -s "$DOTFILES_DIR/config" .config
+test ! -e "$HOME/.bashrc" && ln -s "$DOTFILES_DIR/bashrc" .bashrc
+test ! -e "$HOME/.zshrc" && ln -s "$DOTFILES_DIR/zsh/zshrc" .zshrc
+test ! -e "$HOME/.zsh_plugins.txt" && ln -s "$DOTFILES_DIR/zsh/zsh_plugins.txt" .zsh_plugins.txt
 
 # Install kickstart nvim
 test ! -e "$HOME/.config/nvim" && git clone https://github.com/vinibaggio/kickstart.nvim.git $HOME/.config/nvim
@@ -27,7 +29,7 @@ echo "Installing nvim plugins..."
 nvim --headless "+Lazy! sync" +qa
 
 echo "Running general bundle"
-brew bundle
+brew bundle --file "$DOTFILES_DIR/brewfiles/Brewfile"
 
 echo "Installing private repo things if exists..."
 if [ -d "$HOME/code/vinibaggio-private" ]; then

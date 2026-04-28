@@ -7,3 +7,16 @@ config/1Password
 config/github-copilot
 config/Autodesk
 config/raycast
+config/raycast/extensions
+config/.wrangler
+config/graphite
+config/rclone
+config/swiftpm
+config/gh/hosts.yml
+config/iterm2/AppSupport
+config/fish
+config/karabiner/automatic_backups
+config/mise
+config/op/config
+config/op/plugins/used_items
+config/planetscale/state.yml

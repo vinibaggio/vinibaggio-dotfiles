@@ -1,11 +1,9 @@
 #!/bin/bash
 
 # setup the basics
-sudo apt-get install build-essential curl file git autoconf
-sudo add-apt-repository ppa:jonathonf/vim
-
-# Mosh with forward agent patch
-sudo dpkg -i vinibaggio-profile/bin/mosh_1.3.2-2_amd64.deb
+sudo apt-get update
+sudo apt-get install -y build-essential curl file git autoconf software-properties-common mosh
+sudo add-apt-repository -y ppa:jonathonf/vim
 
 # setup linuxbrew
 
