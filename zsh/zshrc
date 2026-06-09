@@ -41,3 +41,4 @@ fi
 # Pi local LM Studio shortcut
 alias pilocal='pi --provider lm-studio --model google/gemma-4-e4b-pi-32k'
 
+eval "$(fasder --init auto aliases)"
