@@ -3,6 +3,11 @@
 sudo defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write com.jetbrains.intellij ApplePressAndHoldEnabled -bool false
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+defaults write com.mitchellh.ghostty ApplePressAndHoldEnabled -bool false
+
+# Key repeat
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
 defaults write com.apple.screencapture disable-shadow -bool true
 defaults write com.apple.finder CreateDesktop false
 
@@ -12,15 +17,5 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool false
 
 
-# Shitty font stuff, see https://tonsky.me/blog/monitors/
-defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
-
+# Font smoothing, see https://tonsky.me/blog/monitors/
 defaults write com.microsoft.VSCode CGFontRenderingFontSmoothingDisabled 0
-defaults write com.microsoft.VSCode.helper CGFontRenderingFontSmoothingDisabled 0
-defaults write com.microsoft.VSCode.helper.EH CGFontRenderingFontSmoothingDisabled 0
-defaults write com.microsoft.VSCode.helper.NP CGFontRenderingFontSmoothingDisabled 0
-
-
-# Iterm config
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/code/vinibaggio-dotfiles/iterm2-config"
-defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
