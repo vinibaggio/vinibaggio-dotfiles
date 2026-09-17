@@ -29,6 +29,3 @@
 #	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [init]
 	defaultBranch = main
-[trace2]
-	eventTarget = af_unix:stream:/Users/vinny/.git-ai/internal/daemon/trace2.sock
-	eventNesting = 0

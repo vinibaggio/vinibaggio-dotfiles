@@ -49,6 +49,3 @@ alias pilocal='pi --provider lm-studio --model google/gemma-4-e4b-pi-32k'
 
 eval "$(fasder --init auto aliases)"
 eval "$(zoxide init zsh)"
-
-# Added by git-ai installer on Thu Jul  9 12:14:41 EDT 2026
-export PATH="$HOME/.git-ai/bin:$PATH"
