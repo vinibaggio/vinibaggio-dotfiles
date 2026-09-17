@@ -1,6 +1,6 @@
 [user]
   email = 33053+vinibaggio@users.noreply.github.com
-  signingkey = /Users/vinny/.ssh/id_ed25519.pub
+  signingkey = ~/.ssh/id_ed25519.pub
 [alias]
 	co = checkout
 	cob = checkout -b
