@@ -1,0 +1,16 @@
+bashrc
+  h_a4779260563cfa 1
+config/git/config
+  h_a4779260563cfa 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "1a045f3e4f7f0809c49bf858e080168811dcf0a5",
+  "prompts": {},
+  "humans": {
+    "h_a4779260563cfa": {
+      "author": "Vinicius Baggio Fuentes <33053+vinibaggio@users.noreply.github.com>"
+    }
+  }
+}
