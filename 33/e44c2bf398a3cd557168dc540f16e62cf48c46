@@ -1,0 +1,16 @@
+bashrc
+  h_a4779260563cfa 19
+zsh/zshrc
+  h_a4779260563cfa 54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "33e44c2bf398a3cd557168dc540f16e62cf48c46",
+  "prompts": {},
+  "humans": {
+    "h_a4779260563cfa": {
+      "author": "Vinicius Baggio Fuentes <33053+vinibaggio@users.noreply.github.com>"
+    }
+  }
+}
