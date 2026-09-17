@@ -1,0 +1,19 @@
+zsh/zshrc
+  s_e8be3e7d37eb54::t_9ecdb6c537380d 7-14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "47553331cb19279cd608aa63c6334613faefa562",
+  "prompts": {},
+  "sessions": {
+    "s_e8be3e7d37eb54": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e16fb128-0fe2-46be-99b5-8fa3cd3ed473",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Vinicius Baggio Fuentes <33053+vinibaggio@users.noreply.github.com>"
+    }
+  }
+}
