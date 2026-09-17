@@ -14,3 +14,6 @@ export PATH="$PATH:$HOME/code/vinibaggio-dotfiles/bin"
 export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
 
+
+# Added by git-ai installer on Thu Jul  9 12:14:41 EDT 2026
+export PATH="$HOME/.git-ai/bin:$PATH"

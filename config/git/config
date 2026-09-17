@@ -1,11 +1,11 @@
 [user]
-       email = vinibaggio@gmail.com
-       name = Vinicius Baggio Fuentes
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA9srFuD1RwIkLxo+FER4WOOuHBgmQ06qMbfSxk8+ATS
+  email = 33053+vinibaggio@users.noreply.github.com
+  signingkey = /Users/vinny/.ssh/id_ed25519.pub
 [alias]
 	co = checkout
 	cob = checkout -b
 	br = branch
+	ci = commit
 	ci = commit
 	st = status
 	cp = cherry-pick
@@ -15,7 +15,7 @@
 	default = simple
 
 [core]
-	excludesfile = /Users/vinibaggio/.config/git/ignore
+	excludesfile = ~/.config/git/ignore
 
 [pull]
 	rebase = true
@@ -23,7 +23,12 @@
 	gpgsign = true
 [gpg]
 	format = ssh
+[tag]
+  gpgsign = true
 # [gpg "ssh"]
 #	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [init]
 	defaultBranch = main
+[trace2]
+	eventTarget = af_unix:stream:/Users/vinny/.git-ai/internal/daemon/trace2.sock
+	eventNesting = 0

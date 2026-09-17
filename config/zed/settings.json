@@ -1,0 +1,46 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "agent": {
+    "favorite_models": [],
+    "model_parameters": [],
+    "auto_compact": {
+      "threshold": "70%"
+    }
+  },
+  "proxy": "",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+    "anthropic_retention": false
+  },
+  "vim_mode": true,
+  "agent_servers": {
+    "cursor": {
+      "type": "registry"
+    },
+    "codex-acp": {
+      "type": "registry"
+    },
+    "claude-acp": {
+      "default_config_options": {
+        "mode": "auto"
+      },
+      "type": "registry"
+    }
+  },
+  "icon_theme": "Zed (Default)",
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "One Dark",
+  },
+}

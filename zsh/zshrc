@@ -4,8 +4,14 @@ export EDITOR=nvim
 
 export ZSH_CACHE_DIR="$HOME/.cache"
 
-# Plugins
-source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+# Keep PATH/fpath free of duplicates: .zprofile and .zshrc both prepend entries,
+# and login+interactive shells run both.
+typeset -U path PATH fpath
+
+# Plugins. HOMEBREW_PREFIX is already exported by `brew shellenv` in .zprofile;
+# the fallback is only for shells that somehow skipped it, since `brew --prefix`
+# forks a Ruby process (~40ms).
+source "${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/antidote/share/antidote/antidote.zsh"
 antidote load
 
 # Load external config
@@ -42,3 +48,7 @@ fi
 alias pilocal='pi --provider lm-studio --model google/gemma-4-e4b-pi-32k'
 
 eval "$(fasder --init auto aliases)"
+eval "$(zoxide init zsh)"
+
+# Added by git-ai installer on Thu Jul  9 12:14:41 EDT 2026
+export PATH="$HOME/.git-ai/bin:$PATH"

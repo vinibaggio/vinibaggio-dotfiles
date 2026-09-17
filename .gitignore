@@ -20,3 +20,11 @@ config/mise
 config/op/config
 config/op/plugins/used_items
 config/planetscale/state.yml
+config/clay
+config/cursor
+config/homebrew
+config/husky
+config/mintlify
+config/openlogi
+config/zed/prompts
+config/zed/themes
