@@ -1,0 +1,37 @@
+zsh/zshrc
+  s_e8be3e7d37eb54::t_9ecdb6c537380d 7-14
+  h_a4779260563cfa 54
+  h_a4779260563cfa 51-53
+bashrc
+  h_a4779260563cfa 19
+  h_a4779260563cfa 17-18
+.gitignore
+  h_a4779260563cfa 23-30
+config/git/config
+  h_a4779260563cfa 2-3,9,18,26-27,32-34
+config/git/ignore
+  h_a4779260563cfa 8-11
+config/zed/settings.json
+  h_a4779260563cfa 1-46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f9453b748c7bf204daabbee1d3255d9ffa19f810",
+  "prompts": {},
+  "humans": {
+    "h_a4779260563cfa": {
+      "author": "Vinicius Baggio Fuentes <33053+vinibaggio@users.noreply.github.com>"
+    }
+  },
+  "sessions": {
+    "s_e8be3e7d37eb54": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e16fb128-0fe2-46be-99b5-8fa3cd3ed473",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Vinicius Baggio Fuentes <33053+vinibaggio@users.noreply.github.com>"
+    }
+  }
+}
