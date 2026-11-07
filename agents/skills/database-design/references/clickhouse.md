@@ -78,7 +78,7 @@ VLDB paper, materialized views; `clickhouse-best-practices` MV rules.
 | `LIMIT` relied on to bound cost | `LIMIT` stops output, not the scan or the aggregation. Bound with the sort-key prefix and a time range; set `max_execution_time` / `max_rows_to_read` on user-facing queries | `EXPLAIN ESTIMATE` |
 | Large right side in a `JOIN` | The right side is built in memory. The 26.x analyzer swaps sides automatically (`query_plan_join_swap_table = auto`), but a dimension lookup is a dictionary or `IN (subquery)` | `EXPLAIN` |
 | `uniqExact` / `count(DISTINCT)` on a dashboard | `uniq` / `uniqCombined` unless the exact number is the product | Review |
-| Read-after-write against ClickHouse (write to Postgres, then read ClickHouse expecting the row) | CDC lag is seconds to minutes. Overlay the primary for recent rows, or carry the value forward; `DATABASE.md` "Query discipline" | Test with a stale replica |
+| Read-after-write against ClickHouse (write to Postgres, then read ClickHouse expecting the row) | CDC lag is seconds to minutes. Overlay the primary for recent rows, or carry the value forward; `services/terracotta-service/AGENTS.md` § Bottlenecks (replica ~1 s behind, tens of minutes in bursts) | Test with a stale replica |
 | SQL built with string interpolation | `chsql` from `@clay-run/shared/src/clickhouse/chsql`; identifiers through `chsql.identifier(...)` (`libs/shared/src/clickhouse/chsql.ts`) | Review |
 | Entity table names hard-coded in Audiences | `src/db/repositories/clickhouse/entity-table-names.ts` | `services/audiences/AGENTS.md` |
 
@@ -92,4 +92,4 @@ Changing a projection column to `MATERIALIZED` (`ALTER TABLE … MODIFY COLUMN �
 
 For a new ClickHouse table: the source of truth and how rows arrive (ClickPipes, Kafka, application batch), the engine and how duplicates/deletes collapse, the sort key and the query shapes it serves (with `EXPLAIN indexes = 1` granule counts), partition key and expected partition count, and which service and version it targets.
 
-Sizing through `chctl` (Query API, ~30 s gateway timeout; the query may keep running server-side): take row counts and bytes from `system.tables` (`total_rows`, `total_bytes`) and `system.parts`, not `count()` over a large table; bound ad-hoc counts to one partition or one day; check the version with `SELECT version()` on the target service.
+Sizing through `chctl` (Query API, ~30 s gateway timeout; the query may keep running server-side): take row counts and bytes from `system.tables` (`total_rows`, `total_bytes`) and `system.parts`, not `count()` over a large table; bound ad-hoc counts to one partition or one day (`chctl --help`: "a timeout may follow execution"; in practice the gateway cuts off around 30 s); check the version with `SELECT version()` on the target service.

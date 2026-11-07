@@ -15,7 +15,7 @@ Datadog is not the whole picture. A decommissioned Aurora cluster keeps emitting
 | Terracotta (ClickHouse Cloud managed Postgres `terracotta-pg-prod`, async HA, i8ge.6xlarge; moved from Aurora 2026-10-01) | **18.6** (`SELECT version()`, 2026-11-06) | 17 (`postgres-terracotta`, 5435); CI **16.2** (`node-and-db-and-redis-and-clickhouse` executor) | **16**: CI is the floor, so 17 and 18 syntax stays out of migrations and queries; 18 runtime behavior (skip scan, async I/O) applies in production only |
 | `agents` schema (same `terracotta-pg-prod` database)              | 18.6                                  | 17 (`postgres-terracotta`, 5435); CI 16.2   | 16                            |
 | Reps (ClickHouse Cloud managed Postgres `reps-pg-prod`, created 2026-10-26) | **18.6** | 14.5 (`reps` database on the main `postgres` container, 5433); CI 16.2 | **14**: local is the floor, two majors below CI and four below production |
-| GTM agent                                    | 17.4 / 17.9 (mid-upgrade)             | 17 (`postgres-gtm-agent`, 5436)             | 17                            |
+| GTM agent                                    | 17.4 / 17.9 (mid-upgrade)             | 17 (`postgres-gtm-agent`, 5436); CI 16.2    | **16** (CI floor)             |
 | Entity data ingestion                        | 17.9                                  | n/a                                         | 17                            |
 | Scheduler, trigger-event-monitor, url-shortener | 16.11                              | url-shortener 15 locally                    | 16                            |
 | `entities-data-db`                           | 15.15                                 | n/a                                         | 15                            |
@@ -25,7 +25,7 @@ Every CI job that needs Postgres runs `cimg/postgres:16.2` (there is no 17 image
 
 ### Feature gates that come up in reviews
 
-| Feature                                                                             | Since | 14 (main, reps local) | 16 (scheduler, TEM, url-shortener; CI for everything) | 17 (GTM agent, entity ingestion; Terracotta local) | 18.6 (Terracotta, Reps production) |
+| Feature                                                                             | Since | 14 (main, reps local) | 16 (scheduler, TEM, url-shortener; CI for everything, so the floor for Terracotta, `agents`, GTM agent) | 17 (entity ingestion production; GTM agent and Terracotta local) | 18.6 (Terracotta, Reps production) |
 | ----------------------------------------------------------------------------------- | ----- | ------------ | ------ | ------ | ------ |
 | `ADD COLUMN … DEFAULT <non-volatile>` without a rewrite                             | 11    | yes          | yes    | yes    | yes    |
 | `SET NOT NULL` skips the scan when a validated `CHECK (col IS NOT NULL)` exists     | 12    | yes          | yes    | yes    | yes    |
@@ -43,7 +43,7 @@ Consequences reviewers keep relearning:
 
 - On the main database, "insert or update" is `INSERT … ON CONFLICT`, not `MERGE`. A unique constraint over nullable columns treats NULLs as distinct; enforce uniqueness with a partial unique index (`WHERE col IS NULL` / `IS NOT NULL` pair) or a unique index on `COALESCE(col, <sentinel>)`.
 - UUIDv7 keys are generated in the application. `uuidv7()` exists on Terracotta and Reps production but not on their local or CI databases, so a migration or default that calls it fails before it reaches production.
-- Terracotta migrations are written for 16 (CI floor; local is 17), Reps for 14 (local floor), and both run on 18.6. Runtime-only 18 features (skip scan on multicolumn B-trees, `io_method = worker`) change plans in production without changing what you may write; test plans on production-shaped data, not on local 17.
+- Terracotta, `agents`, and GTM-agent migrations are written for 16 (CI floor; local is 17), Reps for 14 (local floor); Terracotta and Reps run on 18.6 in production. Runtime-only 18 features (skip scan on multicolumn B-trees, `io_method = worker`) change plans in production without changing what you may write; test plans on production-shaped data, not on local 17.
 - Prefer a syntax that works on 14 in shared libraries (`libs/shared-backend`) unless the library is pinned to one database.
 
 ### Aurora-specific behavior (main, sharded, GTM agent, scheduler, trigger-event-monitor, entity ingestion, url-shortener)
@@ -81,7 +81,7 @@ Feature tiers on 26.2, from `system.settings` on Audiences - PROD (2026-11-06). 
 | Vector similarity index                                               | `allow_experimental_vector_similarity_index`  | GA (flag obsolete)         | n/a            | n/a                 |
 | Full-text (`text`) index                                              | `enable_full_text_index`                      | Production                 | on             | on                  |
 | New analyzer                                                          | `enable_analyzer`                             | Production                 | on             | on                  |
-| Lightweight `DELETE`                                                  | `lightweight_deletes_sync`                    | Production                 | sync           | sync                |
+| Lightweight `DELETE`                                                  | `lightweight_deletes_sync`                    | Production                 | 2 (wait for all replicas) | 1 (this replica) |
 | Lightweight `UPDATE` (patch parts)                                    | `enable_lightweight_update`                   | **Beta**                   | on             | **off**             |
 | Column statistics for the optimizer                                   | `use_statistics` / `allow_statistics_optimize` | Beta / Beta               | on / on        | on / **off**        |
 | Parallel replicas                                                     | `enable_parallel_replicas`                    | Production                 | off            | off                 |
