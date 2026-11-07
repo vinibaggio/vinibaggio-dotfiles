@@ -7,7 +7,7 @@ description: USE THIS whenever a diff or a design touches a database, alongside 
 
 The team's database canon, distilled into moves an agent can apply and checks that catch regressions, pinned to the engine versions production runs. Sources (`references/sources.md`): Designing Data-Intensive Applications 2nd ed. (Kleppmann & Riccomini, 2026), Database Internals (Petrov), SQL Antipatterns Vol. 1 (Karwin, 2022), SQL Performance Explained (Winand), Refactoring Databases (Ambler & Sadalage), PostgreSQL 14 Internals (Rogov), PostgreSQL Query Optimization 2nd ed. (Dombrovskaya et al., 2024), PostgreSQL Mistakes and How to Avoid Them (Angelakos, 2025), High Performance PostgreSQL for Rails (Atkinson, 2024), the ClickHouse VLDB 2024 paper, and the valkey.io, BullMQ, and AWS docs. Nothing here restates a book; each reference maps a source to the smells this repo has and the move that fixes them.
 
-This skill specializes `software-design`. That skill owns transaction and lock *shape* (no I/O inside a transaction, fencing, publish after commit, replica reads); this one owns the database itself: schema, migrations, indexes, query plans, isolation, engine choice, ClickHouse merge semantics, Redis memory and failover. Domain repo skills (in the clay-base checkout under `.agents/skills/`, not `~/.agents/skills/`) add rules this one defers to: `clickhouse-best-practices` and `clickhouse-architecture-advisor` for any ClickHouse work; `clay-audiences` and `audiences-platform-review` for Audiences (Vitess + ClickHouse); `clay-credit-budgets` and `clay-credit-reporting` for anything that counts usage per workspace or enforces a limit (the repo's Redis-Lua + Postgres + ClickHouse credit system); `workflows-platform` for Terracotta.
+This skill specializes `software-design`, which owns transaction and lock *shape* (no I/O inside a transaction, fencing, publish after commit, replica reads). This skill owns the database itself: schema, migrations, indexes, query plans, isolation, engine choice, ClickHouse merge semantics, Redis memory and failover. Transaction and lock *shape* (no I/O inside a transaction, fencing with a generation, publish and enqueue after commit, replica reads for lists) is owned by `apps/api/code-agents/DATABASE.md` ("Transactions") and, for Terracotta, `services/terracotta-service/AGENTS.md` and `docs/workflows/AGENTS.md`; this skill cites those rules and does not restate them. Domain repo skills (in the clay-base checkout under `.agents/skills/`, not `~/.agents/skills/`) add rules this one defers to: `clickhouse-best-practices` and `clickhouse-architecture-advisor` for any ClickHouse work; `clay-audiences`, `audiences-platform-review`, and `audiences-data-modeling-review` for Audiences (Vitess + ClickHouse); `clay-credit-budgets` and `clay-credit-reporting` for anything that counts usage per workspace or enforces a limit (the repo's Redis-Lua + Postgres + ClickHouse credit system); `workflows-platform` for Terracotta.
 
 ## The bar for a database finding
 
@@ -70,8 +70,8 @@ Run this for any change that adds or reshapes stored data. Write the answers in 
 
 Severity follows `pre-push-review`:
 
-- **P1**: wrong results or data loss (NULL semantics, non-idempotent upsert, ReplacingMergeTree read without dedupe, cache as source of truth), a migration that takes a blocking lock on a hot table without `lock_timeout` or rewrites it, a deploy-order break (dropped or renamed column still mapped, `NOT NULL` before writers ship), a feature the production version does not have, a queue on an evicting cluster.
-- **P2**: a real cost on a plausible path: missing index for a new production query, unbounded read, N+1, `OFFSET` pagination on a growing table, per-event ClickHouse inserts, no TTL on a cache key, O(N) Redis command on a growing key, a backfill in a migration, a new "never" with no check.
+- **P1**: wrong results or data loss (NULL semantics, non-idempotent upsert, ReplacingMergeTree read without dedupe, cache as source of truth), a migration that takes a blocking lock on a hot table without `lock_timeout` or rewrites it, a deploy-order break (dropped or renamed column still mapped, `NOT NULL` before writers ship), a feature that the production version or the lowest version you may assume (`versions.md`) does not have, a queue on an evicting cluster.
+- **P2**: a real cost on a plausible path: missing index for a new production query, unbounded read, N+1, `OFFSET` pagination on a user-facing list over a growing table (`DATABASE.md` accepts `OFFSET` batching with a deterministic `ORDER BY` for scripts), per-event ClickHouse inserts, no TTL on a cache key, O(N) Redis command on a growing key, a backfill in a migration, a new "never" with no check.
 - **P3**: type nits (`varchar(n)` vs `text`), redundant-but-harmless index, naming.
 
 Order by blast radius: data integrity, then locks and outages, then hot-path cost. Say when a helper, CI job, or test already catches the issue. Do not flag code the diff does not change. If there are no findings, one line. When a co-loaded repo skill prescribes its own output (for example `clickhouse-best-practices` "Rules Checked / Violations"), use this format and cite that skill's rule names inline.
@@ -80,14 +80,23 @@ For a design discussion with no diff, replace `path:line` with `shape:` plus the
 
 ## House positions
 
-Decisions the team has already taken; do not relitigate them.
+Decisions the repo's docs already take; do not relitigate them. Each names its source.
 
-- Postgres is the source of truth for anything a user was promised. ClickHouse and Redis hold derived copies that can be rebuilt.
-- Schema changes ship expand → migrate → contract across releases. No in-place renames. Columns are dropped only after a release that no longer maps them.
-- Index builds on existing tables are concurrent and go through `createIndexConcurrently`; exclusive-lock DDL goes through `withExclusiveLockRetry` (main database) or sets `lock_timeout` first (other databases). Slow indexes are built out-of-band through the DB-script workflow before the migration lands.
-- Backfills are resumable, batched, idempotent scripts dispatched through `run-db-script.yml`, never data-changing migrations over large tables.
-- Uniqueness is a database constraint plus a single-statement upsert, never check-then-insert. Under `relationMode = "prisma"`, compare-and-set is `$executeRaw` with the predicate in the `UPDATE`.
-- Every tenant query filters on `workspace_id`; on the sharded database it is mandatory.
-- No Postgres `ENUM` types on the main database. Typed columns over `jsonb` for anything filtered, sorted, or updated on its own.
-- ClickHouse migrations are forward-only, idempotent, and expand-only; replication owns CDC tables; readers of Replacing tables dedupe at read time.
-- Every Redis cache key has a TTL. Queues live on `noeviction` clusters separate from caches. Redis locks are efficiency locks; correctness lives in Postgres.
+- Postgres (Vitess for Audiences) is the source of truth for anything a user was promised. ClickHouse and Redis hold derived copies that can be rebuilt (`services/audiences/AGENTS.md`, `services/terracotta-service/AGENTS.md`).
+- Schema changes ship expand → migrate → contract across releases. No in-place renames. Columns are dropped only after a release that no longer maps them (`ROLLOUT.md`).
+- On the main database, index builds on existing tables go through `createIndexConcurrently` and exclusive-lock DDL through `withExclusiveLockRetry`; slow indexes are built out-of-band through the DB-script workflow before the migration lands (`DATABASE.md`). Prisma and Kysely databases use one `CONCURRENTLY` statement per migration file.
+- Backfills are resumable, batched, idempotent scripts dispatched through `run-db-script.yml`, never data-changing migrations over large tables (`apps/api/scripts/AGENTS.md`).
+- Uniqueness is a database constraint plus a single-statement upsert, never check-then-insert (`DATABASE.md`). Under `relationMode = "prisma"`, compare-and-set is `$executeRaw` with the predicate in the `UPDATE` (`libs/terracotta/AGENTS.md`).
+- Every tenant query filters on `workspace_id`; on the sharded database it is mandatory (`DATABASE.md`).
+- No Postgres `ENUM` types on the main database. Typed columns over `jsonb` for anything filtered, sorted, or updated on its own (`DATABASE.md`).
+- ClickHouse migrations are forward-only, idempotent, and expand-only; replication owns CDC tables; readers of Replacing tables dedupe at read time unless a `[##]` marker records otherwise (`services/audiences/AGENTS.md`, `services/terracotta-service/AGENTS.md`).
+- Deterministic `jobId` per entity; reschedule with `moveToDelayed`, never by re-enqueueing from the handler; local cache TTL shorter than the Redis TTL (`JOBS_AND_QUEUES.md`).
+
+## Rules this skill adds
+
+Not yet written down elsewhere in the repo; apply them, label findings with "(this skill's rule)", and expect pushback.
+
+- Every DDL migration on a Prisma or Kysely database sets `lock_timeout` first (`BEGIN; SET LOCAL lock_timeout = '5s'; …; COMMIT;`). Today 2 of 179 Terracotta, 3 of 8 trigger-event-monitor, and none of the Reps, GTM-agent, `agents`, or scheduler migrations do.
+- Every Redis cache key has a TTL, and no per-tenant collection grows without a cap (ElastiCache defaults to `volatile-lru`).
+- Queues live on `noeviction` clusters separate from caches (BullMQ's production guide). The repo already separates `*-bullmq-*` clusters; the parameter group is not recorded anywhere in the repo.
+- Redis locks are efficiency locks; a correctness invariant is enforced in Postgres with a constraint or a fenced update (Kleppmann, "How to do distributed locking").

@@ -4,6 +4,8 @@ Sources: DDIA 2e ("Data Models and Query Languages", "Storage and Retrieval", "E
 
 The one-line version: **pick the store by the access pattern and the consistency promise, then model for the query you will run most often at the size it will reach.**
 
+In the Check column, "Review" means no automation exists: the check is a reviewer reading the diff, so write `(unenforced)` in a finding.
+
 ## 1. Which store owns the data
 
 DDIA 2e "Trade-offs in Data Systems Architecture" (systems of record vs derived data).
@@ -18,7 +20,7 @@ DDIA 2e "Trade-offs in Data Systems Architecture" (systems of record vs derived 
 | Work to be done later, with retries | BullMQ on a `noeviction` cluster, or a Postgres row claimed with `SKIP LOCKED` when the job must be transactional with the write that creates it | Pub/sub |
 | Large blobs (payloads, documents, files) | S3 with a pointer row; or the Terracotta payload archive in ClickHouse where that pattern exists | `jsonb`/`text` columns over a few hundred KB |
 
-A design that writes the same fact to two stores names which one is authoritative and how the other is rebuilt (`software-design` "Derived data must declare its source of truth").
+A design that writes the same fact to two stores names which one is authoritative and how the other is rebuilt (`DATABASE.md` "Schema design": prefer plain typed columns over JSONB, so a fact lives once).
 
 ## 2. Model for the dominant query
 

@@ -1,8 +1,10 @@
 # Postgres queries, indexes, transactions, and MVCC
 
-Sources: SQL Performance Explained / use-the-index-luke.com (index design, pagination), PostgreSQL Query Optimization 2nd ed. (reading plans, short vs long queries, ORM shapes), PostgreSQL 14 Internals ("Isolation", "Page Pruning and HOT Updates", "Vacuum and Autovacuum", "Statistics", index chapters), DDIA 2e "Transactions", Database Internals (B-tree costs). Repo rules: `apps/api/code-agents/DATABASE.md`, `services/terracotta-service/AGENTS.md`, `libs/terracotta/AGENTS.md`. Transaction and lock *shape* (I/O inside transactions, fencing, publish after commit) is `software-design` `references/data-intensive.md`; do not duplicate those findings here.
+Sources: SQL Performance Explained / use-the-index-luke.com (index design, pagination), PostgreSQL Query Optimization 2nd ed. (reading plans, short vs long queries, ORM shapes), PostgreSQL 14 Internals ("Isolation", "Page Pruning and HOT Updates", "Vacuum and Autovacuum", "Statistics", index chapters), DDIA 2e "Transactions", Database Internals (B-tree costs). Repo rules: `apps/api/code-agents/DATABASE.md`, `services/terracotta-service/AGENTS.md`, `libs/terracotta/AGENTS.md`. Transaction and lock *shape* (I/O inside transactions, fencing, publish after commit) is owned by `DATABASE.md` "Transactions" and `services/terracotta-service/AGENTS.md`; do not duplicate those findings here.
 
 The one-line version: **a query is reviewed at production cardinality, not at fixture size.** Name the table's row count and the rows the query touches; a plan that is fine at 10k rows can be a sequential scan of 200M.
+
+In the Check column, "Review" means no automation exists: the check is a reviewer reading the diff, so write `(unenforced)` in a finding.
 
 ## 1. Every query has an index story
 
@@ -13,7 +15,7 @@ The one-line version: **a query is reviewed at production cardinality, not at fi
 | New index whose leading columns duplicate an existing one | `(workspace_id, x)` already serves `workspace_id` alone; drop the redundant one, every index costs every write and blocks HOT updates on its columns | `DATABASE.md`; `pg_stat_user_indexes.idx_scan = 0` in prod for unused ones |
 | Function or cast on the indexed column (`lower(email) = …`, `created_at::date = …`, `jsonb->>'k' = …`) | Rewrite as a range on the raw column, or add an expression index that matches the expression exactly | `EXPLAIN` |
 | `ILIKE '%term%'` / `LIKE '%term'` | B-tree cannot serve a leading wildcard. `pg_trgm` GIN index, or send search to ClickHouse/OpenSearch | Karwin "Poor Man's Search Engine" |
-| Queue-style table polled by status | Partial index `WHERE status = 'pending'` (small, stays hot); claim with `FOR UPDATE SKIP LOCKED` | Precedents: `apps/api/v3/billing/operations/expiration.service.ts`, `apps/api/modules/plays/models/play-entity.model.ts` |
+| Queue-style table polled by status | Partial index `WHERE status = 'pending'` (small, stays hot); claim with `FOR UPDATE SKIP LOCKED` | Partial-index precedent: `billing_operations_due_idx WHERE status = 'pending'` (`apps/api/migrations/20261021200948-create-billing-operations.ts`); `SKIP LOCKED` precedents: `apps/api/v3/billing/operations/expiration.service.ts`, `apps/api/modules/plays/models/play-entity.model.ts` |
 | Correlated columns the planner treats as independent (`workspace_id`, `table_id`) giving 1000× row misestimates | `CREATE STATISTICS … (dependencies, ndistinct)` on the pair, then `ANALYZE` | `EXPLAIN ANALYZE` estimated vs actual rows |
 | Index on a low-selectivity boolean or status used alone | The planner ignores it; make it partial or put it after a selective column | `EXPLAIN` |
 
@@ -51,11 +53,11 @@ DDIA 2e "Transactions" (lost update, write skew); PostgreSQL 14 Internals "Isola
 | Read-modify-write in the application (`read balance; write balance - x`) | Atomic `UPDATE … SET balance = balance - $1 WHERE … AND balance >= $1`, or `SELECT … FOR UPDATE` first | Concurrency test with two writers |
 | Check-then-insert for uniqueness | Unique index + single-statement `INSERT … ON CONFLICT`; the database is the only thing that can decide "first" | `DATABASE.md` |
 | Terracotta `updateMany` used as compare-and-set | Under `relationMode = "prisma"`, `updateMany` is SELECT-then-UPDATE by id. Use `$executeRaw` with the predicate in one `UPDATE` and check the row count | `libs/terracotta/AGENTS.md`; precedent `tryConditionalSealDataList` |
-| Global `prisma` used inside a `$transaction` callback | Runs on another connection, outside the transaction (SEV-169). Use `tx` | `services/terracotta-service` oxlint repository-only rule + baseline |
+| Global `prisma` used inside a `$transaction` or lock callback | Takes a second pooled connection while the first is held; under load that exhausts the pool (SEV-169, `services/terracotta-service/AGENTS.md`). Use `tx` | `services/terracotta-service/architecture/__tests__/service-architecture.test.ts` with `no-io-in-lock.baseline.json` (shrink-only); the oxlint rule only restricts where `prisma` is imported |
 | Two code paths lock the same rows in different orders | Deterministic lock order (sort ids), or `pg_advisory_xact_lock(hashtextextended(key, 0))` | `DATABASE.md`; precedents `apps/api/v3/billing/services/credit-reward.service.ts`, `apps/api/modules/gtm-agent/internal/services/gtm-agent-active-task-limit.service.ts` |
 | Session-level advisory lock (`pg_advisory_lock`) through a pooled connection | Through RDS Proxy or any pool, the session can outlive the request or be shared; use the `_xact_` form | Review |
 | `SERIALIZABLE` or `REPEATABLE READ` without a retry on `40001` | Either retry the whole transaction on serialization failure or stay at `READ COMMITTED` with explicit locks | Review |
-| Transaction left open across a network call, a queue add, or user think-time | Holds row locks and the xmin horizon: blocks vacuum database-wide, bloats every hot table | `software-design` lock-I/O rule; Terracotta lock-I/O graph test |
+| Transaction left open across a network call, a queue add, or user think-time | Holds row locks and the xmin horizon: blocks vacuum database-wide, bloats every hot table | `services/terracotta-service/AGENTS.md` lock-I/O rule; Terracotta `architecture/__tests__/service-architecture.test.ts` (lock-I/O graph, shrink-only baseline) |
 
 ## 5. MVCC costs: every update is an insert
 
@@ -64,14 +66,14 @@ PostgreSQL 14 Internals "Pages and Tuples", "Page Pruning and HOT Updates", "Vac
 | Smell | Move | Check |
 | --- | --- | --- |
 | Frequently updated column that is also indexed | Updating any indexed column defeats HOT; every update writes a new entry in every index. Drop the index, or move the hot column to its own narrow table | `pg_stat_user_tables.n_tup_hot_upd / n_tup_upd` |
-| Hot counter or status row updated per event | One row version per update plus vacuum work; see `software-design` hot-row list. Per-chunk rows rolled up later | Hot-row list |
+| Hot counter or status row updated per event | One row version per update plus vacuum work; see `docs/workflows/AGENTS.md` ("Two load regimes"). Per-chunk rows rolled up later | Review |
 | Frequently rewritten large `jsonb` document | Each change writes a full new TOASTed copy and its WAL. Hot keys become columns | `DATABASE.md` (typed columns over JSONB) |
-| Long-running query or idle-in-transaction session on the writer | Pins the xmin horizon; dead rows in every table stay. `idle_in_transaction_session_timeout` / `statement_timeout` on the role. On Terracotta and Reps (managed Postgres) all three timeouts are 0 at the server, so a long transaction is bounded only by what the code sets (`CHUNK_TRANSACTION_TIMEOUT_MS` in Terracotta) | Aurora: Datadog `postgresql.transactions.duration.max`; managed Postgres: `pg_stat_activity` via `chctl cloud postgres query` |
+| Long-running query or idle-in-transaction session on the writer | Pins the xmin horizon; dead rows in every table stay. `idle_in_transaction_session_timeout` / `statement_timeout` on the role. On Terracotta and Reps (managed Postgres) all three timeouts are 0 at the server, so a long transaction is bounded only by the `terracotta_service` role default (`lock_timeout=10s`, locks only) and what the code sets (`CHUNK_TRANSACTION_TIMEOUT_MS`, Prisma `timeout`) | Aurora: Datadog `postgresql.transactions.duration.max`; managed Postgres: `pg_stat_activity` via `chctl cloud postgres query` |
 | Table with huge insert-then-delete churn (queues, sessions) | Tune per-table autovacuum (`autovacuum_vacuum_scale_factor`) or partition by time and drop partitions | Review |
 
 ## 6. Reading plans
 
-Ask for `EXPLAIN (ANALYZE, BUFFERS)` from a database with production-shaped data (a staging snapshot, not a fresh local DB), and read it for: estimated vs actual rows (misestimate > 10× means stale or missing statistics), `Rows Removed by Filter` much larger than rows returned (missing index or wrong column order), sequential scans on large tables, sorts spilling to disk (`external merge`), nested loops over large outer sets, and shared `read` buffers (cold I/O) vs `hit`. On Postgres 17 databases `EXPLAIN (SERIALIZE)` also shows the cost of sending large results. Prisma and MikroORM use prepared statements: after five executions Postgres may switch to a generic plan, so a query that is fast for one workspace can be slow for a large one; test with the largest tenant's parameters.
+Ask for `EXPLAIN (ANALYZE, BUFFERS)` from a database with production-shaped data (a staging snapshot, not a fresh local DB), and read it for: estimated vs actual rows (misestimate > 10× means stale or missing statistics), `Rows Removed by Filter` much larger than rows returned (missing index or wrong column order), sequential scans on large tables, sorts spilling to disk (`external merge`), nested loops over large outer sets, and shared `read` buffers (cold I/O) vs `hit`. On Postgres 17 databases `EXPLAIN (SERIALIZE)` also shows the cost of sending large results. Postgres switches a named prepared statement to a generic plan after five executions when the generic cost looks competitive, so a query that is fast for one workspace can be slow for a large one; [INFERENCE] Prisma's engine uses named statements, MikroORM through `pg` does not. Test with the largest tenant's parameters.
 
 ## What to write in the PR
 
