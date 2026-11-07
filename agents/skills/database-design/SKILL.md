@@ -96,7 +96,7 @@ Decisions the repo's docs already take; do not relitigate them. Each names its s
 
 Not yet written down elsewhere in the repo; apply them, label findings with "(this skill's rule)", and expect pushback.
 
-- Every lock-taking DDL migration on a Prisma or Kysely database (anything but a single-statement `CREATE INDEX CONCURRENTLY` file, which cannot run in a transaction) sets `lock_timeout` first (`BEGIN; SET LOCAL lock_timeout = '5s'; …; COMMIT;`). Today 2 of the 145 non-`CONCURRENTLY` Terracotta migrations, 3 of 8 trigger-event-monitor, and none of the Reps, GTM-agent, `agents`, or scheduler migrations do.
+- Every lock-taking DDL migration on a Prisma or Kysely database (anything but a single-statement `CREATE INDEX CONCURRENTLY` file, which cannot run in a transaction) sets `lock_timeout` first (`BEGIN; SET LOCAL lock_timeout = '5s'; …; COMMIT;`). Today 2 of the 148 lock-taking Terracotta migrations, 3 of 8 trigger-event-monitor, and none of the Reps, GTM-agent, `agents`, or scheduler migrations do.
 - Every Redis cache key has a TTL, and no per-tenant collection grows without a cap (ElastiCache defaults to `volatile-lru`).
 - Queues live on `noeviction` clusters separate from caches (BullMQ's production guide). The repo already separates `*-bullmq-*` clusters; the parameter group is not recorded anywhere in the repo.
 - Redis locks are efficiency locks; a correctness invariant is enforced in Postgres with a constraint or a fenced update (Kleppmann, "How to do distributed locking").
