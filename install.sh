@@ -23,6 +23,16 @@ ln -sfn "$DOTFILES_DIR/bashrc" .bashrc
 ln -sfn "$DOTFILES_DIR/zsh/zshrc" .zshrc
 ln -sfn "$DOTFILES_DIR/zsh/zsh_plugins.txt" .zsh_plugins.txt
 
+# Agent skills and rules (omp, Claude Code, Codex). Skills link one directory
+# at a time so skills installed from other sources can live next to them.
+mkdir -p .agents/skills .omp/agent .claude .codex
+for skill in "$DOTFILES_DIR"/agents/skills/*/; do
+  ln -sfn "${skill%/}" ".agents/skills/$(basename "$skill")"
+done
+ln -sfn "$DOTFILES_DIR/agents/omp/RULES.md" .omp/agent/RULES.md
+ln -sfn "$DOTFILES_DIR/agents/claude/CLAUDE.md" .claude/CLAUDE.md
+ln -sfn "$DOTFILES_DIR/agents/codex/AGENTS.md" .codex/AGENTS.md
+
 # Install kickstart nvim
 test ! -e "$HOME/.config/nvim" && git clone https://github.com/vinibaggio/kickstart.nvim.git $HOME/.config/nvim
 
